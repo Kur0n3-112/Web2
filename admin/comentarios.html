@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--
+    Página: admin/comentarios.html — Moderación de comentarios
+    Área: Administración
+    Propósito: Revisar, aprobar/editar/eliminar y gestionar comentarios reportados o recientes.
+    Accesibilidad: HTML5 semántico, skip link, landmarks, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios - Panel de Administración</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="bi bi-shield-check"></i> Admin Panel
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li><a href="usuarios.html" class="nav__link"><i class="bi bi-people"></i> Usuarios</a></li>
+                    <li><a href="documentos.html" class="nav__link"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+                    <li><a href="comentarios.html" class="nav__link nav__link--active"><i class="bi bi-chat-dots"></i> Comentarios</a></li>
+                    <li><a href="categorias.html" class="nav__link"><i class="bi bi-tags"></i> Categorías</a></li>
+                    <li><a href="../index.html" class="btn btn--outline btn--sm"><i class="bi bi-box-arrow-left"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main">
+        <div class="container">
+            <div class="flex justify-between align-center mb-6">
+                <h1><i class="bi bi-chat-dots"></i> Moderación de Comentarios</h1>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="grid grid--cols-2 grid--md-cols-4 mb-8">
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h3>23</h3>
+                        <p class="mb-0">Reportados</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h3>15</h3>
+                        <p class="mb-0">Pendientes</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h3>1,847</h3>
+                        <p class="mb-0">Aprobados</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h3>1,885</h3>
+                        <p class="mb-0">Total</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="card mb-6">
+                <div class="card__body">
+                    <form class="grid grid--cols-1 grid--md-cols-4 grid--gap-md">
+                        <div class="form-group">
+                            <label for="searchComment" class="form-label">Buscar</label>
+                            <input type="text" id="searchComment" class="form-input" placeholder="Buscar comentario...">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterStatus" class="form-label">Estado</label>
+                            <select id="filterStatus" class="form-select">
+                                <option value="">Todos</option>
+                                <option value="reported" selected>Reportados</option>
+                                <option value="pending">Pendientes</option>
+                                <option value="approved">Aprobados</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filterDate" class="form-label">Fecha</label>
+                            <select id="filterDate" class="form-select">
+                                <option value="">Todas</option>
+                                <option value="today">Hoy</option>
+                                <option value="week">Esta semana</option>
+                            </select>
+                        </div>
+                        <div class="form-group flex align-center">
+                            <button type="submit" class="btn btn--primary" style="margin-top: 1.75rem;">
+                                <i class="bi bi-funnel"></i> Filtrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Comentarios Reportados -->
+            <div class="card mb-6">
+                <div class="card__header">
+                    <div class="flex justify-between align-center">
+                        <h2 class="card__title mb-0">
+                            <i class="bi bi-exclamation-triangle"></i> Comentarios Reportados (23)
+                        </h2>
+                        <div class="flex gap-4">
+                            <button class="btn btn--success btn--sm">
+                                <i class="bi bi-check-all"></i> Aprobar Todos
+                            </button>
+                            <button class="btn btn--danger btn--sm">
+                                <i class="bi bi-trash"></i> Eliminar Todos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__body">
+                    <!-- Comentario 1 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div class="flex gap-4 align-center">
+                                    <div>
+                                        <strong>Ana Martínez</strong>
+                                        <span class="badge badge--error ml-2">3 reportes</span>
+                                    </div>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 13/11/2025 - 07:30</small>
+                            </div>
+                            <p>Este proyecto es una completa basura. No entiendo cómo alguien puede aprobar algo tan malo. El autor claramente no tiene idea de lo que está haciendo.</p>
+                            <div class="alert alert--error mb-4">
+                                <strong><i class="bi bi-flag"></i> Motivos de reporte:</strong>
+                                <ul>
+                                    <li>Lenguaje ofensivo (2 reportes)</li>
+                                    <li>Acoso o bullying (1 reporte)</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-exclamation-triangle"></i> Advertir Usuario</button>
+                                <button class="btn btn--ghost btn--sm"><i class="bi bi-ban"></i> Suspender Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentario 2 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div class="flex gap-4 align-center">
+                                    <div>
+                                        <strong>Pedro Gómez</strong>
+                                        <span class="badge badge--error ml-2">5 reportes</span>
+                                    </div>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 13/11/2025 - 06:15</small>
+                            </div>
+                            <p>¡¡¡COMPRA AHORA!!! Los mejores productos al mejor precio. Visita www.spam-ejemplo.com y obtén un 90% de descuento. ¡No te lo pierdas! Código: SPAM2025</p>
+                            <div class="alert alert--error mb-4">
+                                <strong><i class="bi bi-flag"></i> Motivos de reporte:</strong>
+                                <ul>
+                                    <li>Spam o publicidad (4 reportes)</li>
+                                    <li>Contenido no relacionado (1 reporte)</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-exclamation-triangle"></i> Advertir Usuario</button>
+                                <button class="btn btn--ghost btn--sm"><i class="bi bi-ban"></i> Suspender Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentario 3 -->
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div class="flex gap-4 align-center">
+                                    <div>
+                                        <strong>Laura Fernández</strong>
+                                        <span class="badge badge--error ml-2">2 reportes</span>
+                                    </div>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 12/11/2025 - 23:45</small>
+                            </div>
+                            <p>Este contenido es plagiado de mi blog personal. El autor no tiene permiso para usar mi material. Exijo que se retire inmediatamente.</p>
+                            <div class="alert alert--error mb-4">
+                                <strong><i class="bi bi-flag"></i> Motivos de reporte:</strong>
+                                <ul>
+                                    <li>Violación de derechos de autor (2 reportes)</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-exclamation-triangle"></i> Advertir Usuario</button>
+                                <button class="btn btn--ghost btn--sm"><i class="bi bi-ban"></i> Suspender Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comentarios Recientes -->
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title mb-0"><i class="bi bi-clock-history"></i> Comentarios Recientes</h2>
+                </div>
+                <div class="card__body">
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div>
+                                    <strong>Juan Pérez</strong>
+                                    <span class="badge badge--success ml-2">Aprobado</span>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 13/11/2025 - 07:45</small>
+                            </div>
+                            <p>Excelente documento. Muy completo y bien estructurado. Me ha servido mucho para mi proyecto final. ¡Gracias por compartirlo!</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div>
+                                    <strong>María García</strong>
+                                    <span class="badge badge--success ml-2">Aprobado</span>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 13/11/2025 - 07:20</small>
+                            </div>
+                            <p>¿Alguien sabe si hay una segunda parte de este documento? Me gustaría profundizar más en el tema de la replicación de datos.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="flex justify-between mb-4">
+                                <div>
+                                    <strong>Carlos López</strong>
+                                    <span class="badge badge--success ml-2">Aprobado</span>
+                                </div>
+                                <small><i class="bi bi-calendar"></i> 13/11/2025 - 06:50</small>
+                            </div>
+                            <p>Muy buena introducción al tema. Los ejemplos con Python son muy claros y fáciles de seguir. Recomendado 100%.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 Portal Académico - Panel de Administración</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  Página: public/login.html — Autenticación
+  Área: Público (acceso)
+  Propósito: Iniciar sesión para acceder al portal.
+  Accesibilidad: HTML5 semántico, skip link, labels asociados, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inicia sesión en el Portal Académico para acceder a tus materiales y colecciones">
+  <title>Iniciar Sesión - Portal Académico</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Enlace para saltar al contenido (accesibilidad) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  
+  <!-- Encabezado -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="../index.html" class="header__logo" aria-label="Portal Académico - Inicio">
+        &#128218; Portal Académico
+      </a>
+      
+      <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="../index.html" class="nav__link">Inicio</a></li>
+          <li><a href="materiales.html" class="nav__link">Materiales</a></li>
+          <li><a href="colecciones.html" class="nav__link">Colecciones</a></li>
+          <li><a href="dudas.html" class="nav__link">Q&amp;A</a></li>
+          <li><a href="login.html" class="nav__link nav__link--active" aria-current="page">Iniciar sesión</a></li>
+          <li><a href="registro.html" class="btn btn--primary btn--sm">Registrarse</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Contenido principal -->
+  <main id="main-content" class="main" role="main">
+    <div class="container container--narrow">
+      <div class="auth-container">
+        <!-- Cabecera -->
+        <div class="text-center mb-8">
+          <h1 class="page-title">Bienvenido de nuevo</h1>
+          <p class="page-description">
+            Inicia sesión para acceder a tu cuenta y gestionar tus materiales
+          </p>
+        </div>
+        
+        <!-- Formulario de login -->
+        <div class="card">
+          <div class="card__body" style="padding: var(--spacing-8);">
+            <form action="../index.html" method="post" novalidate>
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email" class="form-label form-label--required">
+                  Correo electrónico
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="tu@email.com"
+                  required
+                  autocomplete="email"
+                >
+                <span class="form-help">
+                  Introduce el correo que usaste para registrarte
+                </span>
+              </div>
+              
+              <!-- Contraseña -->
+              <div class="form-group">
+                <label for="password" class="form-label form-label--required">
+                  Contraseña
+                </label>
+                <input 
+                  type="password" 
+                  id="password" 
+                  name="password" 
+                  class="form-input" 
+                  placeholder="Introduce tu contraseña"
+                  required
+                  autocomplete="current-password"
+                >
+              </div>
+              
+              <!-- Recordar sesión -->
+              <div class="form-checkbox mb-6">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Mantener sesión iniciada</label>
+              </div>
+              
+              <!-- Botón submit -->
+              <button type="submit" class="btn btn--primary btn--lg btn--block mb-4">
+                Iniciar sesión
+              </button>
+              
+              <!-- Enlace recuperar contraseña -->
+              <div class="text-center">
+                <a href="#" style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Registro alternativo -->
+        <div class="text-center mt-6">
+          <p style="color: var(--color-text-secondary);">
+            ¿No tienes cuenta? 
+            <a href="registro.html" class="font-weight-semibold" style="font-weight: var(--font-weight-semibold);">
+              Regístrate gratis
+            </a>
+          </p>
+        </div>
+        
+        <!-- Información de roles -->
+        <div class="mt-8">
+          <div class="alert alert--info">
+            <h3 class="alert__title">Tipos de cuenta</h3>
+            <ul style="margin-left: var(--spacing-6); margin-top: var(--spacing-3); line-height: 1.8;">
+              <li><strong>Usuario normal:</strong> Busca, descarga y comenta materiales</li>
+              <li><strong>Colaborador:</strong> Además, sube documentos y crea colecciones</li>
+              <li><strong>Administrador:</strong> Gestiona usuarios y modera contenidos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Pie de página -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__section-title">Portal Académico</h3>
+          <p>Plataforma colaborativa para compartir conocimiento y recursos educativos entre estudiantes y docentes.</p>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Recursos</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="materiales.html" class="footer__link">Explorar materiales</a></li>
+            <li class="footer__list-item"><a href="colecciones.html" class="footer__link">Colecciones</a></li>
+            <li class="footer__list-item"><a href="dudas.html" class="footer__link">Preguntas y respuestas</a></li>
+            <li class="footer__list-item"><a href="subida.html" class="footer__link">Subir material</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Comunidad</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Guía de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Normas de la comunidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Preguntas frecuentes</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Legal</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Términos de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Política de privacidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Licencias</a></li>
+            <li class="footer__list-item"><a href="../admin/index.html" class="footer__link">Administración</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>&copy; 2025 Portal Académico. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+    Página: admin/documentos.html — Validación de documentos
+    Área: Administración
+    Propósito: Revisar y validar documentos pendientes; ver estado y acciones.
+    Accesibilidad: HTML5 semántico, skip link, landmarks, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - Panel de Administración</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="bi bi-shield-check"></i> Admin Panel
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li><a href="usuarios.html" class="nav__link"><i class="bi bi-people"></i> Usuarios</a></li>
+                    <li><a href="documentos.html" class="nav__link nav__link--active"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+                    <li><a href="comentarios.html" class="nav__link"><i class="bi bi-chat-dots"></i> Comentarios</a></li>
+                    <li><a href="categorias.html" class="nav__link"><i class="bi bi-tags"></i> Categorías</a></li>
+                    <li><a href="../index.html" class="btn btn--outline btn--sm"><i class="bi bi-box-arrow-left"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main">
+        <div class="container">
+            <h1><i class="bi bi-file-earmark-text"></i> Validación de Documentos</h1>
+
+            <!-- Estadísticas -->
+            <div class="grid grid--cols-2 grid--md-cols-4 mb-8">
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>47</h2>
+                        <p class="mb-0">Pendientes</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>450</h2>
+                        <p class="mb-0">Aprobados</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>23</h2>
+                        <p class="mb-0">Rechazados</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>520</h2>
+                        <p class="mb-0">Total</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentos Pendientes -->
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">Documentos Pendientes de Validación (47)</h2>
+                </div>
+                <div class="card__body">
+                    <!-- Documento 1 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center mb-4">
+                                <div>
+                                    <h3 class="mb-2">Proyecto_Final.pdf</h3>
+                                    <p class="mb-2"><i class="bi bi-person"></i> Juan Pérez | <i class="bi bi-calendar"></i> 13/11/2025 - 08:30</p>
+                                    <span class="badge badge--warning">Pendiente</span>
+                                    <span class="badge badge--secondary">2.4 MB</span>
+                                </div>
+                            </div>
+                            <p class="mb-4">Proyecto final de la asignatura de Sistemas Distribuidos. Incluye implementación de sistema de mensajería.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-x-lg"></i> Rechazar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver Documento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documento 2 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center mb-4">
+                                <div>
+                                    <h3 class="mb-2">Investigación_IA.docx</h3>
+                                    <p class="mb-2"><i class="bi bi-person"></i> María García | <i class="bi bi-calendar"></i> 13/11/2025 - 07:45</p>
+                                    <span class="badge badge--warning">Pendiente</span>
+                                    <span class="badge badge--secondary">1.8 MB</span>
+                                </div>
+                            </div>
+                            <p class="mb-4">Trabajo de investigación sobre redes neuronales convolucionales aplicadas al reconocimiento de imágenes.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-x-lg"></i> Rechazar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver Documento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documento 3 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center mb-4">
+                                <div>
+                                    <h3 class="mb-2">Presentación_TFG.pptx</h3>
+                                    <p class="mb-2"><i class="bi bi-person"></i> Carlos López | <i class="bi bi-calendar"></i> 13/11/2025 - 06:20</p>
+                                    <span class="badge badge--warning">Pendiente</span>
+                                    <span class="badge badge--secondary">5.2 MB</span>
+                                </div>
+                            </div>
+                            <p class="mb-4">Presentación del Trabajo de Fin de Grado sobre desarrollo de aplicaciones móviles multiplataforma.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-x-lg"></i> Rechazar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver Documento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documento 4 -->
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center mb-4">
+                                <div>
+                                    <h3 class="mb-2">Análisis_Datos.xlsx</h3>
+                                    <p class="mb-2"><i class="bi bi-person"></i> Ana Martínez | <i class="bi bi-calendar"></i> 12/11/2025 - 22:15</p>
+                                    <span class="badge badge--warning">Pendiente</span>
+                                    <span class="badge badge--secondary">890 KB</span>
+                                </div>
+                            </div>
+                            <p class="mb-4">Análisis estadístico de datos de ventas del último trimestre con visualizaciones y proyecciones.</p>
+                            <div class="flex gap-4">
+                                <button class="btn btn--success btn--sm"><i class="bi bi-check-lg"></i> Aprobar</button>
+                                <button class="btn btn--danger btn--sm"><i class="bi bi-x-lg"></i> Rechazar</button>
+                                <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver Documento</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 Portal Académico - Panel de Administración</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

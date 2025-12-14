@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+    Página: public/duda.html — Q&A detalle
+    Área: Público (comunidad)
+    Propósito: Detalle de una pregunta, estado y respuestas; formulario para responder.
+    Accesibilidad: HTML5 semántico, skip link, landmarks, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo implementar recursividad en Python? - Portal Académico</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__container">
+            <a href="../index.html" class="header__logo">
+                <i class="bi bi-book"></i> Portal Académico
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="../index.html" class="nav__link">Inicio</a></li>
+                    <li><a href="materiales.html" class="nav__link">Explorar</a></li>
+                    <li><a href="subida.html" class="nav__link">Subir Material</a></li>
+                    <li><a href="dudas.html" class="nav__link nav__link--active">Dudas</a></li>
+                    <li><a href="login.html" class="btn btn--primary btn--sm">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main">
+        <div class="container container--narrow">
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="mb-6">
+                <a href="dudas.html" class="btn btn--ghost btn--sm">
+                    <i class="bi bi-arrow-left"></i> Volver a Dudas
+                </a>
+            </nav>
+
+            <!-- Pregunta Principal -->
+            <div class="card mb-6">
+                <div class="card__header">
+                    <div class="flex justify-between align-center mb-3">
+                        <span class="badge badge--primary">Programación</span>
+                        <span class="badge badge--warning">Sin responder</span>
+                    </div>
+                    <h1 class="card__title">¿Cómo implementar recursividad en Python?</h1>
+                    <div class="flex gap-4 align-center mt-3">
+                        <span><i class="bi bi-person"></i> Juan Pérez</span>
+                        <span><i class="bi bi-calendar"></i> 13/11/2025 - 10:30</span>
+                        <span><i class="bi bi-eye"></i> 23 vistas</span>
+                    </div>
+                </div>
+                <div class="card__body">
+                    <p>Hola a todos,</p>
+                    <p>Estoy aprendiendo Python y no entiendo bien cómo funciona la recursividad. He visto algunos ejemplos en internet pero no logro comprender el concepto completamente.</p>
+                    <p>¿Alguien puede explicarme con un ejemplo sencillo cómo funciona? Me gustaría entender:</p>
+                    <ul>
+                        <li>¿Qué es exactamente la recursividad?</li>
+                        <li>¿Cuándo es útil usarla?</li>
+                        <li>¿Cuáles son sus limitaciones?</li>
+                    </ul>
+                    <p>Agradezco cualquier ayuda. ¡Gracias!</p>
+                </div>
+                <div class="card__footer">
+                    <div class="flex gap-4">
+                        <button class="btn btn--outline btn--sm">
+                            <i class="bi bi-hand-thumbs-up"></i> Útil (0)
+                        </button>
+                        <button class="btn btn--outline btn--sm">
+                            <i class="bi bi-bookmark"></i> Guardar
+                        </button>
+                        <button class="btn btn--outline btn--sm">
+                            <i class="bi bi-share"></i> Compartir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respuestas -->
+            <div class="card mb-6">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">0 Respuestas</h2>
+                </div>
+                <div class="card__body text-center">
+                    <i class="bi bi-chat-dots" style="font-size: 3rem; color: var(--color-gray-400);"></i>
+                    <p class="mt-4">Aún no hay respuestas para esta pregunta.</p>
+                    <p>¡Sé el primero en ayudar!</p>
+                </div>
+            </div>
+
+            <!-- Formulario para responder -->
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">Tu Respuesta</h2>
+                </div>
+                <div class="card__body">
+                    <form id="answerForm">
+                        <div class="form-group">
+                            <label for="answer" class="form-label form-label--required">Respuesta</label>
+                            <textarea id="answer" class="form-textarea" rows="8" required placeholder="Escribe tu respuesta aquí..."></textarea>
+                            <span class="form-help">Sé claro y proporciona ejemplos cuando sea posible. Mínimo 50 caracteres.</span>
+                        </div>
+
+                        <div class="alert alert--info mb-6">
+                            <strong><i class="bi bi-info-circle"></i> Consejos para una buena respuesta:</strong>
+                            <ul class="mt-2 mb-0">
+                                <li>Sé claro y conciso</li>
+                                <li>Proporciona ejemplos de código si es relevante</li>
+                                <li>Explica el "por qué", no solo el "cómo"</li>
+                                <li>Verifica que tu respuesta sea correcta</li>
+                            </ul>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--lg">
+                            <i class="bi bi-send"></i> Publicar Respuesta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__section-title">Portal Académico</h3>
+                    <p>Plataforma para compartir y descubrir materiales educativos de calidad.</p>
+                </div>
+                <div>
+                    <h3 class="footer__section-title">Enlaces</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="materiales.html" class="footer__link">Explorar</a></li>
+                        <li class="footer__list-item"><a href="subida.html" class="footer__link">Subir Material</a></li>
+                        <li class="footer__list-item"><a href="dudas.html" class="footer__link">Dudas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Portal Académico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('answerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const answer = document.getElementById('answer').value;
+            
+            if (answer.length < 50) {
+                alert('La respuesta debe tener al menos 50 caracteres.');
+                return;
+            }
+            
+            alert('Respuesta publicada exitosamente.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

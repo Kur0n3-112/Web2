@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+    Página: admin/usuarios.html — Gestión de usuarios
+    Área: Administración
+    Propósito: Buscar, filtrar y gestionar usuarios (crear/editar/eliminar).
+    Accesibilidad: HTML5 semántico, skip link, landmarks, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Panel de Administración</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="bi bi-shield-check"></i> Admin Panel
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li><a href="usuarios.html" class="nav__link nav__link--active"><i class="bi bi-people"></i> Usuarios</a></li>
+                    <li><a href="documentos.html" class="nav__link"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+                    <li><a href="comentarios.html" class="nav__link"><i class="bi bi-chat-dots"></i> Comentarios</a></li>
+                    <li><a href="categorias.html" class="nav__link"><i class="bi bi-tags"></i> Categorías</a></li>
+                    <li><a href="../index.html" class="btn btn--outline btn--sm"><i class="bi bi-box-arrow-left"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main">
+        <div class="container">
+            <div class="flex justify-between align-center mb-6">
+                <h1><i class="bi bi-people"></i> Gestión de Usuarios</h1>
+                <button class="btn btn--primary">
+                    <i class="bi bi-person-plus"></i> Nuevo Usuario
+                </button>
+            </div>
+
+            <!-- Buscador -->
+            <div class="card mb-6">
+                <div class="card__body">
+                    <form class="grid grid--cols-1 grid--md-cols-3 grid--gap-md">
+                        <div class="form-group">
+                            <label for="searchUser" class="form-label">Buscar</label>
+                            <input type="text" id="searchUser" class="form-input" placeholder="Nombre o email...">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterRole" class="form-label">Rol</label>
+                            <select id="filterRole" class="form-select">
+                                <option value="">Todos</option>
+                                <option value="admin">Administrador</option>
+                                <option value="user">Usuario</option>
+                            </select>
+                        </div>
+                        <div class="form-group flex align-center">
+                            <button type="submit" class="btn btn--primary" style="margin-top: 1.75rem;">
+                                <i class="bi bi-search"></i> Buscar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Lista de Usuarios -->
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">Usuarios (1,234)</h2>
+                </div>
+                <div class="card__body">
+                    <!-- Usuario 1 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center">
+                                <div>
+                                    <h3 class="mb-0">Juan Pérez</h3>
+                                    <p class="mb-2">juan.perez@email.com</p>
+                                    <span class="badge badge--error">Administrador</span>
+                                    <span class="badge badge--success">Activo</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver</button>
+                                    <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                    <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 2 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center">
+                                <div>
+                                    <h3 class="mb-0">María García</h3>
+                                    <p class="mb-2">maria.garcia@email.com</p>
+                                    <span class="badge badge--secondary">Usuario</span>
+                                    <span class="badge badge--success">Activo</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver</button>
+                                    <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                    <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 3 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center">
+                                <div>
+                                    <h3 class="mb-0">Carlos López</h3>
+                                    <p class="mb-2">carlos.lopez@email.com</p>
+                                    <span class="badge badge--secondary">Usuario</span>
+                                    <span class="badge badge--success">Activo</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver</button>
+                                    <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                    <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 4 -->
+                    <div class="card mb-4">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center">
+                                <div>
+                                    <h3 class="mb-0">Ana Martínez</h3>
+                                    <p class="mb-2">ana.martinez@email.com</p>
+                                    <span class="badge badge--secondary">Usuario</span>
+                                    <span class="badge badge--warning">Suspendido</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver</button>
+                                    <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                    <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 5 -->
+                    <div class="card">
+                        <div class="card__body">
+                            <div class="flex justify-between align-center">
+                                <div>
+                                    <h3 class="mb-0">Luis Rodríguez</h3>
+                                    <p class="mb-2">luis.rodriguez@email.com</p>
+                                    <span class="badge badge--secondary">Usuario</span>
+                                    <span class="badge badge--success">Activo</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="btn btn--outline btn--sm"><i class="bi bi-eye"></i> Ver</button>
+                                    <button class="btn btn--primary btn--sm"><i class="bi bi-pencil"></i> Editar</button>
+                                    <button class="btn btn--danger btn--sm"><i class="bi bi-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paginación -->
+            <nav aria-label="Paginación" class="mt-8">
+                <ul class="pagination">
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">Anterior</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link pagination__link--active">1</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">2</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">3</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 Portal Académico - Panel de Administración</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

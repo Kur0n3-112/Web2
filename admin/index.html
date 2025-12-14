@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+    Página: admin/index.html — Dashboard admin
+    Área: Administración
+    Propósito: Resumen de métricas, accesos rápidos y actividad reciente.
+    Accesibilidad: HTML5 semántico, skip link, landmarks, foco visible, responsive.
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Panel de Administración</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="bi bi-shield-check"></i> Admin Panel
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link nav__link--active"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li><a href="usuarios.html" class="nav__link"><i class="bi bi-people"></i> Usuarios</a></li>
+                    <li><a href="documentos.html" class="nav__link"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+                    <li><a href="comentarios.html" class="nav__link"><i class="bi bi-chat-dots"></i> Comentarios</a></li>
+                    <li><a href="categorias.html" class="nav__link"><i class="bi bi-tags"></i> Categorías</a></li>
+                    <li><a href="../index.html" class="btn btn--outline btn--sm"><i class="bi bi-box-arrow-left"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main">
+        <div class="container">
+            <h1><i class="bi bi-speedometer2"></i> Dashboard</h1>
+
+            <!-- Estadísticas Principales -->
+            <div class="grid grid--cols-2 grid--md-cols-4 mb-8">
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>1,234</h2>
+                        <p class="mb-0">Usuarios</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>47</h2>
+                        <p class="mb-0">Documentos Pendientes</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>23</h2>
+                        <p class="mb-0">Comentarios Reportados</p>
+                    </div>
+                </div>
+                <div class="card text-center">
+                    <div class="card__body">
+                        <h2>18</h2>
+                        <p class="mb-0">Categorías</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acciones Rápidas -->
+            <div class="card mb-8">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">Acciones Rápidas</h2>
+                </div>
+                <div class="card__body">
+                    <div class="grid grid--cols-2 grid--md-cols-4 grid--gap-md">
+                        <a href="usuarios.html" class="btn btn--primary btn--block">
+                            <i class="bi bi-person-plus"></i> Crear Usuario
+                        </a>
+                        <a href="documentos.html" class="btn btn--secondary btn--block">
+                            <i class="bi bi-file-check"></i> Validar Documentos
+                        </a>
+                        <a href="comentarios.html" class="btn btn--outline btn--block">
+                            <i class="bi bi-shield-check"></i> Moderar Comentarios
+                        </a>
+                        <a href="categorias.html" class="btn btn--outline btn--block">
+                            <i class="bi bi-tag"></i> Gestionar Categorías
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actividad Reciente -->
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__title mb-0">Actividad Reciente</h2>
+                </div>
+                <div class="card__body">
+                    <div class="mb-4">
+                        <div class="flex justify-between align-center mb-2">
+                            <div>
+                                <strong>Juan Pérez</strong> subió un documento
+                            </div>
+                            <small>Hace 5 min</small>
+                        </div>
+                        <span class="badge badge--success">Completado</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between align-center mb-2">
+                            <div>
+                                <strong>María García</strong> publicó un comentario
+                            </div>
+                            <small>Hace 12 min</small>
+                        </div>
+                        <span class="badge badge--primary">Nuevo</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between align-center mb-2">
+                            <div>
+                                <strong>Carlos López</strong> actualizó su perfil
+                            </div>
+                            <small>Hace 1 hora</small>
+                        </div>
+                        <span class="badge badge--success">Completado</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between align-center mb-2">
+                            <div>
+                                <strong>Ana Martínez</strong> reportó un comentario
+                            </div>
+                            <small>Hace 2 horas</small>
+                        </div>
+                        <span class="badge badge--warning">Pendiente</span>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between align-center mb-2">
+                            <div>
+                                <strong>Luis Rodríguez</strong> se registró
+                            </div>
+                            <small>Hace 3 horas</small>
+                        </div>
+                        <span class="badge badge--success">Completado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 Portal Académico - Panel de Administración</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

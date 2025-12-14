@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora colecciones temáticas de materiales académicos organizados por temas">
+  <title>Colecciones Académicas - Portal Académico</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Enlace para saltar al contenido (accesibilidad) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  
+  <!-- Encabezado -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="../index.html" class="header__logo" aria-label="Portal Académico - Inicio">
+        &#128218; Portal Académico
+      </a>
+      
+      <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="../index.html" class="nav__link">Inicio</a></li>
+          <li><a href="materiales.html" class="nav__link">Materiales</a></li>
+          <li><a href="colecciones.html" class="nav__link nav__link--active" aria-current="page">Colecciones</a></li>
+          <li><a href="dudas.html" class="nav__link">Q&amp;A</a></li>
+          <li><a href="login.html" class="nav__link">Iniciar sesión</a></li>
+          <li><a href="registro.html" class="btn btn--primary btn--sm">Registrarse</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Contenido principal -->
+  <main id="main-content" class="main" role="main">
+    <div class="container">
+      <!-- Encabezado de página -->
+      <div class="page-header">
+        <h1 class="page-title">Colecciones temáticas</h1>
+        <p class="page-description">
+          Descubre colecciones de materiales cuidadosamente organizados por tema o asignatura
+        </p>
+      </div>
+      
+      <!-- Barra de acciones -->
+      <div class="flex justify-between align-center mb-8 flex-wrap gap-4">
+        <form action="colecciones.html" method="get" class="form-search flex-1 max-w-500">
+          <label for="search-collections" class="visually-hidden">Buscar colecciones</label>
+          <div class="form-search">
+            <span class="form-search__icon" aria-hidden="true">&#128269;</span>
+            <input 
+              type="search" 
+              id="search-collections" 
+              name="q" 
+              class="form-input form-search__input" 
+              placeholder="Buscar colecciones..."
+            >
+          </div>
+        </form>
+        
+        <div class="alert alert--info m-0">
+          <p class="mb-0">
+            <a href="login.html" style="font-weight: var(--font-weight-semibold);">Inicia sesión</a> 
+            como colaborador para crear tus propias colecciones
+          </p>
+        </div>
+      </div>
+      
+      <!-- Pestañas de filtro -->
+      <div class="flex gap-4 mb-6 flex-wrap" role="group" aria-label="Filtros de colecciones">
+        <button class="btn btn--primary" aria-pressed="true">
+          Todas
+        </button>
+        <button class="btn btn--outline" aria-pressed="false">
+          Más populares
+        </button>
+        <button class="btn btn--outline" aria-pressed="false">
+          Recientes
+        </button>
+        <button class="btn btn--outline" aria-pressed="false">
+          Mis colecciones
+        </button>
+      </div>
+      
+      <!-- Cuadrícula de colecciones -->
+      <div class="grid grid--cols-1 grid--md-cols-2 grid--lg-cols-3">
+        <!-- Colección 1 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">15 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=1">Matemáticas para Ingeniería</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Colección completa de materiales de matemáticas orientados a ingenierías: 
+              cálculo, álgebra lineal, ecuaciones diferenciales y métodos numéricos.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>María García</strong></span>
+              <span>&#11015;&#65039; 2.3K descargas</span>
+              <span>&#128197; Actualizada hace 3 días</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 2 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">12 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=2">Programación Web Full Stack</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Todo lo necesario para aprender desarrollo web: HTML, CSS, JavaScript, 
+              frameworks modernos, bases de datos y despliegue en la nube.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Carlos Ruiz</strong></span>
+              <span>&#11015;&#65039; 1.8K descargas</span>
+              <span>&#128197; Actualizada hace 1 semana</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 3 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">8 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=3">Física Cuántica Fundamentals</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Apuntes, ejercicios y exámenes de física cuántica. Desde los postulados básicos 
+              hasta aplicaciones en sistemas complejos.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Ana Martínez</strong></span>
+              <span>&#11015;&#65039; 1.5K descargas</span>
+              <span>&#128197; Actualizada hace 2 semanas</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 4 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">20 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=4">Química Orgánica Completa</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Recursos completos de química orgánica: nomenclatura, reacciones, mecanismos, 
+              estereoquímica y espectroscopía.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Luis Fernández</strong></span>
+              <span>&#11015;&#65039; 1.2K descargas</span>
+              <span>&#128197; Actualizada hace 1 mes</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 5 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">10 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=5">Historia del Arte - Renacimiento</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Análisis detallado del arte renacentista: pintura, escultura y arquitectura. 
+              Incluye biografías de artistas y contexto histórico.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Elena López</strong></span>
+              <span>&#11015;&#65039; 892 descargas</span>
+              <span>&#128197; Actualizada hace 3 semanas</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 6 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">18 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=6">Inglés B2 - Cambridge Preparation</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Materiales de preparación para el examen Cambridge B2 First: gramática, 
+              vocabulario, listening, reading y writing strategies.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Laura Jiménez</strong></span>
+              <span>&#11015;&#65039; 3.1K descargas</span>
+              <span>&#128197; Actualizada hace 5 días</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 7 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">14 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=7">Machine Learning con Python</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Tutoriales y notebooks de ML: regresión, clasificación, clustering, 
+              redes neuronales con scikit-learn, TensorFlow y PyTorch.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Roberto Gil</strong></span>
+              <span>&#11015;&#65039; 2.7K descargas</span>
+              <span>&#128197; Actualizada hace 4 días</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 8 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">9 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=8">Estadística para Data Science</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Fundamentos de estadística para ciencia de datos: probabilidad, distribuciones, 
+              tests de hipótesis y análisis exploratorio.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Javier Morales</strong></span>
+              <span>&#11015;&#65039; 1.9K descargas</span>
+              <span>&#128197; Actualizada hace 2 semanas</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Colección 9 -->
+        <article class="collection-card card">
+          <div class="card__header collection-card__header">
+            <div class="flex justify-between align-center mb-3">
+              <span class="badge badge--success">Pública</span>
+              <span class="badge badge--secondary">11 materiales</span>
+            </div>
+            
+            <h3 class="collection-card__title">
+              <a href="coleccion.html?id=9">Economía y Finanzas Corporativas</a>
+            </h3>
+            
+            <p class="collection-card__description">
+              Materiales de economía empresarial: análisis financiero, valoración de empresas, 
+              gestión de riesgos y decisiones de inversión.
+            </p>
+          </div>
+          
+          <div class="card__footer">
+            <div class="collection-card__meta">
+              <span>&#128100; Por <strong>Isabel Ruiz</strong></span>
+              <span>&#11015;&#65039; 1.1K descargas</span>
+              <span>&#128197; Actualizada hace 1 semana</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <!-- Paginación -->
+      <nav aria-label="Navegación de páginas" class="mt-8">
+        <ul class="pagination">
+          <li class="pagination__item">
+            <a href="?page=1" class="pagination__link pagination__link--active" aria-current="page">1</a>
+          </li>
+          <li class="pagination__item">
+            <a href="?page=2" class="pagination__link">2</a>
+          </li>
+          <li class="pagination__item">
+            <a href="?page=3" class="pagination__link">3</a>
+          </li>
+          <li class="pagination__item">
+            <a href="?page=2" class="pagination__link" aria-label="Página siguiente">›</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+  
+  <!-- Pie de página -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__section-title">Portal Académico</h3>
+          <p>Plataforma colaborativa para compartir conocimiento y recursos educativos entre estudiantes y docentes.</p>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Recursos</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="materiales.html" class="footer__link">Explorar materiales</a></li>
+            <li class="footer__list-item"><a href="colecciones.html" class="footer__link">Colecciones</a></li>
+            <li class="footer__list-item"><a href="dudas.html" class="footer__link">Preguntas y respuestas</a></li>
+            <li class="footer__list-item"><a href="subida.html" class="footer__link">Subir material</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Comunidad</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Guía de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Normas de la comunidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Preguntas frecuentes</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Legal</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Términos de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Política de privacidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Licencias</a></li>
+            <li class="footer__list-item"><a href="../admin/index.html" class="footer__link">Administración</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>&copy; 2025 Portal Académico. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

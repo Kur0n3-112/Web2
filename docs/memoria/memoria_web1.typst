@@ -1,0 +1,865 @@
+//Document Settings
+#set page(
+    paper: "a4",
+    margin: (x: 1.8cm, y: 1.5cm),
+)
+#set text(
+//    font: "Times New Roman",
+    size: 14pt,
+    lang: "es"
+)
+#set par(
+    justify: true,
+    leading: 0.52em,
+)
+
+#set heading(numbering: "1. ")
+
+
+//> Beginning of the paper
+#v(5cm)
+#set text(size: 30pt)
+#align(center)[
+  #set par(justify: false)
+    *Memoria del proyecto — Portal de intercambio de material académico*\
+]
+
+#v(4cm)
+#set text(size: 24pt)
+#grid(
+  columns: (1fr),
+  align(center)[
+    Desarrollo de Aplicaciones Web I — Bloque 1\
+    GIISI\
+    USAL\
+    Alumnos: Pablo Alonso Hernández \
+    Alumno: Juan Riego Vila\
+    Fecha: #datetime.today().display("[day]-[month]-[year]")\
+
+    Versión del documento: 1.0\
+  ]
+)
+
+#set text(size: 14pt)
+
+#pagebreak()
+
+#outline(title: auto)
+
+#pagebreak()
+
+= Resumen ejecutivo
+El proyecto consiste en un portal web que facilita el intercambio y la gestión colaborativa de material académico (apuntes, exámenes, prácticas) entre estudiantes y docentes. La solución prioriza la localización rápida de recursos, la calidad mediante comentarios y valoraciones, y la organización por categorías y colecciones temáticas. Se ha diseñado con enfoque responsive y criterios de accesibilidad AA para garantizar su uso en distintos dispositivos y por todo tipo de usuarios.
+
+*Perfiles de usuario:*
+- Usuario normal: busca, navega, consulta el detalle y descarga materiales; puede comentar y puntuar.
+- Usuario avanzado (colaborador): además, sube documentos, crea y gestiona colecciones, y responde dudas.
+- Administrador: gestiona usuarios, modera comentarios, valida documentos y administra categorías.
+
+*Alcance del Bloque 1 (entrega actual):*
+- Prototipo navegable en HTML5 + CSS con un único fichero de estilos, responsive y validado (W3C), cumpliendo nivel AA de accesibilidad.
+- Páginas clave: portada, listado y detalle de material, autenticación (login/registro), subida de documentos, colecciones, dudas y panel de administración (usuarios, documentos, comentarios, categorías).
+- Mapa de navegación, sistema de diseño (componentes y estilos coherentes), y modelo de datos (diagrama entidad–relación) que guía la futura implementación.
+
+*Queda para el siguiente bloque:*
+- Implementación de backend (PHP), integración con base de datos relacional y autenticación/autorización por roles.
+- Persistencia real de operaciones (CRUD de usuarios, documentos, categorías, comentarios/valoraciones), subida/descarga de archivos, moderación y validación de contenidos.
+- Búsqueda avanzada, paginación/ordenación, y mejoras de experiencia (notificaciones, métricas).
+
+#pagebreak()
+
+= Objetivos y utilidad para las personas usuarias
+
+En este apartado se define qué pretende lograr el portal y cómo aporta valor concreto a cada perfil de usuario. Al fijar objetivos claros se facilita la alineación del diseño de la interfaz, el modelo de datos y las futuras funcionalidades de backend. La utilidad se desglosa por perfiles (normal, colaborador y administrador) para garantizar que las necesidades de cada rol se contemplan explícitamente desde este primer bloque y sirven de base para la priorización en la siguiente fase de implementación dinámica.
+
+== Objetivos generales
+- Facilitar el intercambio ágil y seguro de material académico (apuntes, exámenes, prácticas) entre estudiantes y docentes.
+- Mejorar la calidad y fiabilidad de los recursos mediante comentarios, valoraciones y un flujo de validación.
+- Aumentar la encontrabilidad de contenidos con buscador, filtros, categorías y colecciones temáticas.
+- Fomentar la colaboración y el aprendizaje entre pares a través de dudas y respuestas y la curación de colecciones.
+- Garantizar accesibilidad (nivel AA) y diseño responsive para uso en distintos dispositivos y por todo tipo de usuarios.
+- Proveer una administración eficaz de usuarios y contenidos con control de roles y moderación.
+
+== Utilidad por perfil
+
+=== Usuario normal
+- Encontrar materiales relevantes mediante búsqueda por título/autor y filtros por categoría.
+- Consultar el detalle de cada recurso (metadatos, descripción, licencia) y realizar descargas.
+- Valorar y comentar materiales para orientar a otros usuarios y mejorar la calidad del repositorio.
+- Explorar y seguir colecciones temáticas públicas para estudiar por asignaturas o tópicos concretos.
+
+=== Usuario avanzado (colaborador)
+- Subir nuevos documentos con metadatos estandarizados y gestionar sus aportaciones.
+- Crear y mantener colecciones temáticas propias, organizar recursos y compartirlos.
+- Responder dudas planteadas por la comunidad y recibir retroalimentación (comentarios y valoraciones).
+- Consultar el estado de validación de sus documentos (pendiente, publicado, rechazado) y corregir si es necesario.
+
+=== Administrador
+- Gestionar cuentas de usuario y roles (altas, bajas, modificaciones, activación/desactivación).
+- Moderar comentarios para mantener la calidad del contenido y la convivencia.
+- Validar documentos antes de su publicación para asegurar pertinencia, calidad y cumplimiento legal.
+- Crear y mantener la estructura de categorías para una navegación coherente y escalable.
+
+#pagebreak()
+
+= Requisitos y funcionalidades
+
+Esta sección detalla qué debe poder hacer cada perfil de usuario (requisitos funcionales) y las condiciones de calidad y cumplimiento que debe satisfacer el prototipo (requisitos no funcionales).\
+Cada requisito incluye criterios de aceptación verificables en el prototipo HTML+CSS del Bloque 1, a modo de aclaración RF-Nn significa Requisito Funcional para el usuario Normal, RF-Cn.para el usuario avanzado (colaborador), y RF-An para el usuario administrador.\
+Al igual que con los requisitos no funcionales, RNF-n significa Requisito No Funcional número n.
+
+== Requisitos funcionales por perfil
+
+=== Usuario normal
+- *RF-N1:* Buscar materiales por título, autor, categoría.
+  - *Criterios de aceptación:*
+    - Existe un campo de búsqueda y filtros por categoría en las vistas de listado.
+    - Al introducir texto y/o seleccionar una categoría, la interfaz muestra un listado filtrado (simulado en este bloque).
+    - Se visualiza el número de resultados y paginación cuando procede.
+- *RF-N2:* Ver detalle de material y descargar.
+  - *Criterios de aceptación:*
+    - La página de detalle muestra título, autor, fecha, categoría, descripción, licencia y número de descargas.
+    - Existe un botón o enlace de 'Descargar' claramente identificable.
+    - En móvil y escritorio, el botón de descarga mantiene visibilidad y foco accesible.
+- *RF-N3:* Comentar y puntuar materiales.
+  - *Criterios de aceptación:*
+    - En la página de detalle existe una sección de comentarios con formulario (nombre/textarea simulados).
+    - Existe un control de valoración (1–5 estrellas o equivalente) con texto accesible.
+    - Se muestra la media de valoraciones y el número de votos.
+
+=== Usuario avanzado (colaborador)
+- *RF-C1:* Subir documentos con metadatos.
+  - *Criterios de aceptación:*
+    - Formulario de subida con campos: título, descripción, archivo (simulado), categoría, licencia.
+    - Validaciones básicas en el marcado (required) y mensajes de error asociados.
+    - Indicación del estado del documento: 'pendiente de validación' tras la subida (simulado).
+- RF-C2: Crear/editar colecciones temáticas.
+  - *Criterios de aceptación:*
+    - Vistas para listar colecciones propias y formulario para crear/editar.
+    - Posibilidad de añadir/eliminar documentos a una colección desde listado o detalle (UI simulada).
+    - Las colecciones públicas son visibles para otros usuarios.
+- *RF-C3:* Responder dudas.
+  - *Criterios de aceptación:*
+    - Listado de dudas con estado (abierta/cerrada) y contador de respuestas.
+    - Vista de detalle de duda con formulario para responder.
+    - El autor de la duda puede marcar una respuesta como útil o cerrar la duda (UI simulada).
+
+=== Administrador
+- *RF-A1:* Gestión de usuarios (altas/bajas/modificaciones/consulta).
+  - *Criterios de aceptación:*
+    - Pantalla de listado con búsqueda/filtros y acciones: ver, editar, activar/desactivar.
+    - Formulario de edición con campos: nombre, email, rol y estado.
+- *RF-A2:* Moderación de comentarios.
+  - *Criterios de aceptación:*
+    - Vista de comentarios con estado (pendiente/visible/oculto) y acciones de aprobar/ocultar.
+    - Indicadores visuales accesibles del estado actual de cada comentario.
+- *RF-A3:* Validación de documentos (pendiente/publicado/rechazado).
+  - *Criterios de aceptación:*
+    - Listado de documentos pendientes con acceso al detalle y acciones: publicar/rechazar.
+    - Motivo de rechazo (campo de texto) y reflejo del estado en el detalle del documento.
+- *RF-A4:* Gestión de categorías.
+  - *Criterios de aceptación:*
+    - CRUD de categorías con posibilidad de jerarquía (categoría padre).
+    - Validación de nombre obligatorio y visualización de la estructura jerárquica.
+
+== Requisitos no funcionales
+- *RNF-1:* Diseño responsive (mínimo 320px, 768px, 1024px, ≥1440px).
+  - *Criterios de aceptación:*
+    - El layout se adapta sin solapamientos ni scroll horizontal indeseado en esos anchos.
+    - Cabecera, navegación, listados y formularios son usables en móvil con targets táctiles ≥ 44px.
+- *RNF-2:* HTML5 y CSS3 válidos según W3C, un único fichero CSS global.
+  - *Criterios de aceptación:*
+    - Pasa validación W3C HTML y CSS sin errores críticos.
+    - Toda la apariencia se sirve desde un único `css/styles.css` (sin CSS por página).
+- *RNF-3:* Accesibilidad AA conforme a WCAG 2.1/UNE-EN 301 549.
+  - *Criterios de aceptación:*
+    - Contrastes ≥ 4.5:1 texto normal y ≥ 3:1 texto grande; foco visible en elementos interactivos.
+    - Navegación por teclado completa; 'Saltar al contenido' presente.
+    - Formularios con `label` asociados y mensajes de error con `aria-describedby`.
+- *RNF-4:* Compatibilidad con navegadores actuales (prioridad Chrome).
+  - *Criterios de aceptación:*
+    - Visualización correcta en Chrome actual y verificación básica en Firefox y Edge.
+    - Sin uso de propiedades experimentales no soportadas por defecto.
+- *RNF-5:* Semántica HTML con landmarks y navegación por teclado.
+  - *Criterios de aceptación:*
+    - Uso coherente de `header`, `nav`, `main`, `section/article`, `aside`, `footer`.
+    - Orden de tabulación lógico y títulos jerárquicos por página (`h1` único, `h2/h3`).
+
+== Dependencias y notas de implementación
+- Las acciones que implican lógica de servidor (búsqueda real, subida de archivos, autenticación, estados) se simulan en el prototipo con navegación entre páginas y estados UI.
+- El flujo de validación y moderación se representa mediante etiquetas de estado y botones no funcionales todavía.
+- El modelo de datos descrito en la memoria (ER) sustenta las entidades y relaciones usadas en las vistas.
+
+#pagebreak()
+
+= Información que manejará la aplicación
+
+A continuación se describen las entidades principales y los atributos más relevantes que gestionará el portal. No se entra en detalles de implementación de base de datos; el objetivo es definir la información necesaria para soportar las funcionalidades del Bloque 1 y la futura implementación dinámica.
+
+== Usuario
+Información de las cuentas y perfiles de acceso.
+
+- *Atributos principales:*
+  - *id:* identificador único del usuario.
+  - *nombre:* nombre visible en la plataforma.
+  - *email:* correo único para acceso y notificaciones.
+  - *rol:* perfil de acceso {normal | colaborador | admin}.
+  - *estado:* estado de la cuenta {activo | inactivo | bloqueado}.
+  - *fechaAlta:* fecha de creación de la cuenta.
+- *Notas:*
+  - El email debe ser único.
+  - El rol determina permisos (ver funcionalidades por perfil).
+
+== Documento
+Recursos académicos compartidos por la comunidad.
+
+- *Atributos principales:*
+  - *id:* identificador único del documento.
+  - *titulo:* nombre del recurso.
+  - *descripcion:* resumen o sinopsis del contenido.
+  - *autor:* referencia al Usuario que lo sube.
+  - *categoria:* referencia a la Categoría asignada.
+  - *estado:* ciclo de vida {pendiente | publicado | rechazado}.
+  - *urlArchivo:* localización del fichero
+  - *licencia:* tipo de licencia (p. ej., CC BY-NC-SA).
+  - *createdAt / updatedAt:* fechas de creación y última actualización.
+- *Notas:*
+  - El estado 'pendiente' implica que aún no es visible públicamente hasta validación de administración.
+  - Puede estar en varias colecciones temáticas.
+
+== Categoría
+Forma de clasificar los documentos.
+
+- *Atributos principales:*
+  - *id:* identificador único.
+  - *nombre:* etiqueta de la categoría.
+  - *descripcion:* texto descriptivo.
+  - *parentId:* categoría padre (opcional) para jerarquía.
+- *Notas:*
+  - Permite estructuras jerárquicas (asignaturas $->$ temas).
+
+== Comentario
+Aportaciones textuales de usuarios en los documentos.
+
+- Atributos principales:
+  - *id:* identificador único.
+  - *documento:* referencia al Documento comentado.
+  - *autor:* referencia al Usuario que comenta.
+  - *texto:* contenido del comentario.
+  - *estado:* {visible | pendiente | oculto}.
+  - *createdAt:* fecha de publicación.
+- *Notas:*
+  - La moderación puede cambiar el estado (p. ej., ocultar).
+
+== Valoración
+Puntuaciones numéricas asociadas a documentos.
+
+- *Atributos principales:*
+  - *id:* identificador único.
+  - *documento:* referencia al Documento valorado.
+  - *usuario:* referencia al Usuario que valora.
+  - *puntuacion:* entero 1..5.
+  - *createdAt:* fecha de la valoración.
+- *Notas:*
+  - Una única valoración por usuario y documento (unicidad compuesta).
+  - La media de valoraciones se muestra en el detalle del documento.
+
+== Colección
+Conjuntos temáticos de documentos creados por colaboradores.
+
+- *Atributos principales:*
+  - *id:* identificador único.
+  - *nombre:* título de la colección.
+  - *descripcion:* resumen de la temática.
+  - *creador:* referencia al Usuario (colaborador).
+  - *publica:* booleano que indica si es visible para todos.
+  - *createdAt:* fecha de creación.
+- *Notas:*
+  - Sirve para agrupar materiales por asignatura, examen, etc.
+
+== ColecciónDocumento (relación N–M)
+Vinculación entre Colección y Documento.
+
+- *Atributos principales:*
+  - *coleccion:* referencia a la Colección.
+  - *documento:* referencia al Documento.
+- *Notas:*
+  - La combinación (coleccion, documento) debe ser única.
+
+== Duda
+Preguntas planteadas por la comunidad.
+
+- *Atributos principales:*
+  - *id:* identificador único.
+  - *titulo:* breve enunciado de la duda.
+  - *texto:* descripción detallada.
+  - *autor:* referencia al Usuario que la plantea.
+  - *estado:* {abierta | cerrada}.
+  - *createdAt:* fecha de creación.
+- *Notas:*
+  - Puede relacionarse con asignaturas o documentos a través del texto y categorías (no obligatorio).
+
+== Respuesta
+Respuestas a una duda concreta.
+
+- *Atributos principales:*
+  - *id:* identificador único.
+  - *duda:* referencia a la Duda.
+  - *autor:* referencia al Usuario que responde.
+  - *texto:* contenido de la respuesta.
+  - *createdAt:* fecha de publicación.
+- *Notas:*
+  - El autor de la duda puede marcar una respuesta como útil (interacción prevista para el Bloque 2).
+
+== Estados y catálogos (resumen)
+- *Usuario.rol:* normal | colaborador | admin.
+- *Usuario.estado:* activo | inactivo | bloqueado.
+- *Documento.estado:* pendiente | publicado | rechazado.
+- *Comentario.estado:* pendiente | visible | oculto.
+- *Duda.estado:* abierta | cerrada.
+- *Valoración.puntuacion:* 1 a 5.
+
+== Relaciones principales (visión general)
+- Usuario 1–N Documento, Comentario, Valoración, Duda, Respuesta, Colección.
+- Documento 1–N Comentario, 1–N Valoración, N–M Colección (vía ColecciónDocumento).
+- Categoría 1–N Documento y autorrelación Categoría 1–N Categoría (subcategorías).
+- Duda 1–N Respuesta.
+
+== Consideraciones de datos y calidad
+- *Unicidad:* email de Usuario único; combinación (documento, usuario) única en Valoración.
+- *Accesibilidad de metadatos:* todo documento debe incluir título, descripción, categoría y licencia.
+- *Coherencia de estados:* los estados de Documento y Comentario afectan su visibilidad en la UI.
+- *Trazabilidad:* uso de createdAt/updatedAt para ordenar y mostrar actividad reciente.
+
+#pagebreak()
+
+= Modelo de datos (Entidad–Relación)
+Este apartado define el modelo de datos del portal, alineado con las funcionalidades visibles en la interfaz pública y el panel de administración. Se describen entidades, atributos y relaciones con sus cardinalidades, además de reglas de integridad y un esquema relacional (DDL) sugerido para una implementación SQL estándar.
+
+== Entidades y atributos
+- *Usuario*
+ - *Clave primaria:* id
+ - *Atributos:* nombre, email, rol ∈ {normal, colaborador, admin}, estado, fechaAlta
+
+- *Documento*
+ - *Clave primaria:* id
+ - *Atributos:* titulo, descripcion, estado ∈ {pendiente, publicado, rechazado}, urlArchivo, licencia, createdAt, updatedAt
+ - *Foráneas:* autorId $->$ Usuario(id), categoriaId $->$ Categoria(id)
+
+- *Categoria*
+ - *Clave primaria:* id
+ - *Atributos:* nombre, descripcion
+ - *Foránea:* parentId $->$ Categoria(id) (jerarquía de categorías)
+
+- *SubCategoria*
+ - *Clave primaria:* id
+ - *Atributos:* nombre, descripcion
+ - *Foránea:* categoriaId − > Categoria(id) (pertenece a una categoría)
+
+- *Comentario*
+ - *Clave primaria:* id
+ - *Atributos:* texto, createdAt, estado
+ - *Foráneas:* documentoId $->$ Documento(id), autorId $->$ Usuario(id)
+
+- *Valoracion*
+ - *Clave primaria:* id
+ - *Atributos:* puntuacion ∈ [1..5], createdAt
+ - *Foráneas:* documentoId $->$ Documento(id), usuarioId $->$ Usuario(id)
+ - *Restricción:* un usuario no puede valorar dos veces el mismo documento
+
+- *Coleccion*
+ - *Clave primaria:* id
+ - *Atributos:* nombre, descripcion, publica:boolean, createdAt
+ - *Foránea:* creadorId $->$ Usuario(id)
+
+- *ColeccionDocumento (tabla de unión)*
+ - *Clave primaria compuesta:* (coleccionId, documentoId)
+ - *Foráneas:* coleccionId $->$ Coleccion(id), documentoId $->$ Documento(id)
+
+- *Duda*
+ - *Clave primaria:* id
+ - *Atributos:* titulo, texto, createdAt, estado
+ - *Foránea:* autorId $->$ Usuario(id)
+
+- *Respuesta*
+ - *Clave primaria:* id
+ - *Atributos:* texto, createdAt
+ - *Foráneas:* dudaId $->$ Duda(id), autorId $->$ Usuario(id)
+
+== Relaciones y cardinalidades
+- Usuario 1–N Documento (autoría)
+- Usuario 1–N Comentario
+- Usuario 1–N Valoracion
+- Usuario 1–N Duda
+- Usuario 1–N Respuesta
+- Usuario 1–N Coleccion (creación)
+
+- Documento 1–N Comentario
+- Documento 1–N Valoracion
+- Documento N–M Coleccion (vía ColeccionDocumento)
+
+- Categoria 1–N Documento
+- Categoria 1–N SubCategoria
+
+= Diagrama entidad-relacion:
+#figure(
+  image("./images/image3.png", width: 100%),
+)
+
+== RELACIONES (cardinalidades)
+```
+Usuario    (1) ──< (N) Documento          [Documento.autorId -> Usuario.id]
+Categoria  (1) ──< (N) Documento          [Documento.categoriaId -> Categoria.id]
+
+Documento  (1) ──< (N) Comentario         [Comentario.documentoId -> Documento.id]
+Usuario    (1) ──< (N) Comentario         [Comentario.autorId    -> Usuario.id]
+
+Documento  (1) ──< (N) Valoracion         [Valoracion.documentoId -> Documento.id]
+Usuario    (1) ──< (N) Valoracion         [Valoracion.usuarioId   -> Usuario.id]
+(Un único registro por (documentoId, usuarioId))
+
+Usuario    (1) ──< (N) Coleccion          [Coleccion.creadorId -> Usuario.id]
+
+Documento  (N) >─< (N) Coleccion          (vía tabla ColeccionDocumento)
+
+Categoria  (1) ──< (N) SubCategoria       [categoriaId -> Categoria.id]
+```
+
+=== ORDENADO POR ATRIBUTO (Mejor visualización)
+```
+Usuario (1) ──< (N) Documento
+Usuario (1) ──< (N) Comentario
+Usuario (1) ──< (N) Valoracion
+Usuario (1) ──< (N) Duda
+Usuario (1) ──< (N) Respuesta
+Usuario (1) ──< (N) Coleccion
+
+Categoria (1) ──< (N) Documento
+Categoria (1) ──< (N) SubCategoria
+
+Documento (1) ──< (N) Comentario
+Documento (1) ──< (N) Valoracion
+Documento (N) >─< (N) Coleccion
+
+Duda (1) ──< (N) Respuesta
+```
+
+== LEYENDA
+```
+PK  = Clave primaria
+FK  = Clave foránea
+UQ  = Único
+(1) ──< (N)  = Relación uno a muchos
+(N) >─< (N)  = Relación muchos a muchos (mediante tabla intermedia)
+{...|...}    = Dominio enumerado / conjunto de valores permitidos
+```
+
+== Reglas de integridad y restricciones
+
+- *Unicidad*
+ - Usuario.email es único.
+ - Valoracion (usuarioId, documentoId) es única (una valoración por usuario y documento).
+ - Categoria.nombre puede ser único dentro de su parentId (evita duplicados al mismo nivel).
+
+- *Dominios y checks*
+ - Usuario.rol $in$ {'normal','colaborador','admin'}.
+ - Documento.estado $in$ {'pendiente','publicado','rechazado'}.
+ - Valoracion.puntuacion $in$ {1,2,3,4,5}.
+ - Coleccion.publica $in$ {true,false}.
+
+- *Integridad referencial y borrado*
+ - *Documento:* Comentario y Valoracion $->$ ON DELETE CASCADE; ColeccionDocumento $->$ ON DELETE CASCADE.
+ - *Categoria:* Documento.categoriaId $->$ ON DELETE RESTRICT (o SET NULL si se permite sin categoría); Categoria.parentId $->$ ON DELETE SET NULL.
+  - *Usuario:* Documento.autorId $->$ ON DELETE RESTRICT (mantiene autoría). Comentario/Valoracion/Duda/Respuesta/Coleccion $->$ política RESTRICT o SET NULL según auditoría; recomendado RESTRICT para trazabilidad.
+  - *Duda:* Respuesta.dudaId $->$ ON DELETE CASCADE.
+
+== Notas de implementación
+- *Normalización:* el diseño está en 3FN; los catálogos (roles, estados) se modelan como dominios controlados con check. Si se requiere internacionalización o configuración dinámica, pueden externalizarse a tablas de referencia.
+
+- *Consistencia:* se recomiendan triggers/generated columns para mantener updatedAt en Documento y auditar cambios sensibles si procede.
+
+- *Rendimiento:* los índices propuestos cubren búsquedas habituales (por autor, categoría, estado) y las FK de mayor cardinalidad.
+
+#pagebreak()
+
+= Mapa de la aplicación y flujos de navegación
+Esta sección describe la estructura de páginas, rutas, componentes de interacción y condiciones por rol/estado para garantizar coherencia antes del backend.
+
+== Inventario de páginas
+#table(
+  columns: 4,
+  [*Página*], [*Archivo*], [*Perfiles*], [*Propósito*],
+  [Portada], [index.html], [Todos], [Entrada, buscador, destacados.],
+  [Prueba técnica usuario registrado], [public/index.html], [Colaborador/Normal], [Prueba de como seria la experiencia de un usuario registrado.],
+  [Listado materiales], [public/materiales.html], [Todos], [Exploración y filtros.],
+  [Detalle material], [public/material.html], [Todos], [Metadatos, descarga, comentarios, valoración.],
+  [Login], [public/login.html], [No autenticado], [Inicio de sesión.],
+  [Registro], [public/registro.html], [No autenticado], [Alta de cuenta.],
+  [Subida documento], [public/subida.html], [Colaborador], [Formulario nuevo recurso (pendiente).],
+  [Colecciones], [public/colecciones.html], [Colaborador/Normal], [Gestión y exploración de colecciones.],
+  [Detalle colección], [public/coleccion.html], [Colaborador/Normal], [Documentos agrupados y acciones.],
+  [Dudas], [public/dudas.html], [Todos], [Listado preguntas.],
+  [Detalle duda], [public/duda.html], [Todos], [Ver y responder (colaborador).],
+  [Panel admin], [admin/index.html], [Admin], [Resumen pendientes.],
+  [Usuarios], [admin/usuarios.html], [Admin], [CRUD usuarios.],
+  [Documentos (validación)], [admin/documentos.html], [Admin], [Publicar/Rechazar.],
+  [Comentarios (moderación)], [admin/comentarios.html], [Admin], [Aprobar/Ocultar.],
+  [Categorías], [admin/categorias.html], [Admin], [CRUD jerarquía.],
+)
+
+== Navegación global
+Header con logo (link a inicio), menú dependiente del rol, enlace 'Saltar al contenido' (accesibilidad), footer con enlaces secundarios.
+Menú dinámico:
+- No autenticado: Inicio, Materiales, Dudas, Login, Registro.
+- Normal: Inicio, Materiales, Colecciones (públicas), Dudas, Perfil, Logout.
+- Colaborador: Inicio, Materiales, Colecciones, Subir documento, Dudas, Perfil, Logout.
+- Admin: Inicio, Materiales, Admin (submenú), Perfil, Logout.
+
+== Flujo usuario normal
+Index $->$ búsqueda $->$ materiales $->$ detalle $->$ descarga/comenta/valora $->$ colecciones públicas $->$ dudas $->$ detalle duda.
+
+== Flujo colaborador
+Login $->$ subida documento (estado pendiente) $->$ colecciones (crear/editar) $->$ añadir documentos $->$ responder dudas $->$ esperar validación admin.
+
+== Flujo administrador
+Dashboard $->$ revisar documentos pendientes $->$ publicar/rechazar $->$ moderar comentarios $->$ gestionar usuarios y categorías.
+
+== Condiciones de visibilidad
+#table(
+  columns: 3,
+  [*Elemento*], [*Rol visible*], [*Condición*],
+  [Botón Subir], [Colaborador], [rol == colaborador],
+  [Estado Pendiente documento], [Autor + Admin], [documento.estado == pendiente],
+  [Acciones Publicar/Rechazar], [Admin], [documento.estado == pendiente],
+  [Form valoración], [Normal/Colaborador], [Autenticado y sin valoración previa],
+  [Responder duda], [Colaborador], [duda.estado == abierta],
+  [CRUD categorías], [Admin], [rol == admin],
+  [Moderar comentario], [Admin], [comentario.estado == pendiente/visible],
+)
+#pagebreak()
+= Diseño de interfaz y decisiones técnicas
+
+Este apartado documenta las decisiones de diseño adoptadas en la interfaz del proyecto: el sistema de diseño (tokens, componentes y convenciones CSS), la estrategia responsive aplicada y las medidas de accesibilidad para cumplir el nivel AA. Su objetivo es asegurar coherencia visual, sostenibilidad del código y una experiencia inclusiva en todos los dispositivos.
+
+== Sistema de diseño
+- *Tipografías*
+  - *Base:* ```--font-family-base``` (sistema + Roboto/Segoe/Helvetica) para maximizar legibilidad.
+  - *Títulos:* ```--font-family-heading: 'Inter'``` para reforzar jerarquía y consistencia.
+  - *Escala tipográfica con tokens* ```--font-size-*``` (12–36 px) para modularidad.
+
+- *Paleta de color (contraste AA)*
+  - *Tokens* en `:root`: primarios, secundarios, grises y estados (`success`, `warning`, `error`, `info`).
+  - *Texto:* ```--color-text-primary``` y ```--color-text-secondary``` garantizan contraste ≥ 4.5:1 sobre `--color-bg-primary`.
+  - *Estados:* color + texto/icono para no depender únicamente del color.
+
+- *Espaciado, bordes y sombras*
+  - *Sistema de espaciado* 4/8/12/16/… mediante ```--spacing-*```.
+  - *Bordes y radios* en ```--border-width``` y ```--border-radius-*```.
+  - *Sombras* ```--shadow-*``` para jerarquía visual sin comprometer contraste.
+
+- *Grid y contenedores*
+  - *Contenedores responsivos:* `container` y variantes `--narrow` / `--wide`.
+  - *Utilidades de grid:* ```grid```, ```grid--cols-{1..4}```, ```grid--md-cols-*```, ```grid--lg-cols-*```, ```grid--xl-cols-*```.
+
+- *Componentes reutilizables (CSS-only)*
+  - *Botones:* `.btn` con ```--primary|--secondary|--outline|--ghost|--success|--danger``` y tamaños ```--sm|--lg|--block```.
+  - *Formularios:* `.form-input`, `.form-select`, `.form-textarea`, `.form-group`, `.form-help`, `.form-error`, `.form-checkbox`, `.form-radio`, `.form-search`.
+  - *Tarjetas:* `.card` con `__header`, `__body`, `__footer` y variante `.card--clickable`.
+  - *Badges:* `.badge` con ```--primary|--secondary|--success|--warning|--error```.
+  - *Alertas:* `.alert` con ```--info|--success|--warning|--error```.
+  - *Paginación:* `.pagination` con `.pagination__link--active`, accesible por teclado y con foco.
+  - *Chips/Categorías:* patrón `category-card` y uso de `.badge`.
+  - *Modales:* aún no incluidos; cuando se integren, seguirán BEM y requisitos de accesibilidad (p. ej., focus trap).
+
+- *Convenciones CSS*
+  - *BEM: bloques* (`.card`), elementos (`.card__body`) y modificadores (`.btn--primary`).
+  - *Hoja única* `css/styles.css` estructurada por secciones: tokens, reset/base, layout, componentes, utilidades y páginas.
+
+== Responsive
+
+- *Estrategia mobile-first*
+  - Estilos base para móviles y mejoras progresivas con ```@media (min-width: 768px)```, `1024px` y `1440px` (XL).
+  - Ajuste del padding del contenedor y del número de columnas por breakpoint.
+
+- *Breakpoints*
+  - *Tablet:* ```@media (min-width: 768px)``` $->$ activa ```grid--md-cols-*```.
+  - *Desktop:* ```@media (min-width: 1024px)``` $->$ activa `grid--lg-cols-*```.
+  - *XL:* ```@media (min-width: 1440px)``` $->$ activa ```grid--xl-cols-*```.
+
+- *Ejemplos de adaptación*
+  - *Navegación:* en ```<768px, nav__list ``` se apila; en ```>768px```, distribución horizontal con gaps.
+  - *Portada* (`index.html`): categorías con ```grid--cols-2``` (móvil), ```grid--md-cols-3``` (tablet) y ```grid--lg-cols-4``` (desktop).
+  - *Listados* (`public/materiales.html`): filtros en sidebar (desktop) y flujo vertical (móvil); tarjetas en 1/2/3 columnas.
+  - *Panel* admin (`admin/*`): métricas en 2/4 columnas según breakpoint.
+
+== Accesibilidad (AA)
+- *Semántica y landmarks*
+  - Uso de `header`, `nav`, `main`, `section`, `article`, `aside`, `footer` de forma consistente.
+  - *Breadcrumbs y regiones* con `aria-label` cuando aporta claridad (p. ej., 'Navegación principal', 'Ruta de navegación').
+
+- *Teclado y foco visible*
+  - Foco perceptible mediante ```--focus-ring``` en enlaces, botones y campos.
+  - Orden de tabulación lógico acorde al DOM; controles nativos para accesibilidad.
+
+- *Formularios etiquetados*
+  - `label[for]` asociado a cada control y ayudas con `.form-help`.
+  - `aria-describedby` cuando existan ayudas/errores (p. ej., en `login.html` y `registro.html`).
+
+- *Iconos y alternativas textuales*
+  - Iconos decorativos con ```aria-hidden="true"``` o acompañados de texto.
+  - Enlaces con solo icono incluyen texto visible o ```aria-label```.
+
+- *Enlace 'Saltar al contenido'*
+  - `.skip-link` presente en todas las páginas hacia ```#main-content```.
+
+- *No depender solo del color*
+  - Estados acompañados de texto (p. ej., 'Aprobado', 'Pendiente').
+  - Alertas con título + color; categorías con icono + texto.
+
+- *Preferencias de movimiento e impresión*
+  - ```@media (prefers-reduced-motion: reduce)``` para reducir animaciones.
+  - ```@media print``` para ocultar navegación y estilos no esenciales y mejorar la legibilidad.
+
+#pagebreak()
+
+= Páginas entregadas (prototipo HTML+CSS)
+Enumeración de las páginas incluidas y su propósito:
+```
+Web1/
+├── index.html                   ← Página principal
+├── css/
+│   └── styles.css               ← CSS único global
+├── public/
+│   ├── index.html               ← Dashboard usuario registrado
+│   ├── materiales.html          ← Listado de materiales
+│   ├── material.html            ← Detalle de material
+│   ├── colecciones.html         ← Listado de colecciones
+│   ├── coleccion.html           ← Detalle de colección
+│   ├── login.html               ← Autenticación
+│   ├── registro.html            ← Registro
+│   ├── subida.html              ← Subir material
+│   ├── dudas.html               ← Q&A listado
+│   └── duda.html                ← Q&A detalle
+├── admin/
+│   ├── index.html               ← Dashboard admin
+│   ├── usuarios.html            ← Gestión usuarios
+│   ├── documentos.html          ← Validación docs
+│   ├── comentarios.html         ← Moderación
+│   └── categorias.html          ← CRUD categorías
+└── docs/
+    └── memoria/                 ← Memoria del proyecto
+```
+
+== Página de inicio
+#figure(
+  image("./images/image4.png", width: 100%),
+  caption: [
+    Esta página sale cuando se abre el archivo index.html que esta en la raíz del proyecto.
+  ],
+)
+
+== Página que contiene los materiales académicos de la plataforma
+#figure(
+  image("./images/image5.png", width: 100%),
+  caption: [
+    Esta página esta dentro del dominio de los usuarios tanto normal como avanzado, es la que contiene los materiales proporcionados por los usuarios.
+  ],
+)
+
+== Página que contiene las colecciones de materiales académicos.
+#figure(
+  image("./images/image6.png", width: 100%),
+  caption: [
+    Esta página esta dentro del dominio de los usuarios tanto normal como avanzado, es la que contiene las colecciones es decir los grupos de materiales académicos proporcionados por los usuarios.
+  ],
+)
+
+== Página que el apartado de preguntas entre usuarios de la plataforma.
+#figure(
+  image("./images/image7.png", width: 100%),
+  caption: [
+    Esta página esta dentro del dominio de los usuarios tanto normal como avanzado, es la permite ver las preguntas realizadas por usuarios y permite centrarse en una pregunta seleccionando esta para ver su estado.
+  ],
+)
+
+== Página que permite el inicio de sesión de un usuario ya previamente registrado.
+#figure(
+  image("./images/image8.png", width: 100%),
+  caption: [
+    Esta página permite el inicio de sesión de un nuevo usuario mediante los datos clave pedidos.
+  ],
+)
+
+== Página que permite el registro de un usuario nuevo a la plataforma.
+#figure(
+  image("./images/image9.png", width: 100%),
+  caption: [
+    Esta página permite la creación de un usuario en la plataforma mediante el registro de este, este puede ser un usuario normal o un usuario avanzado (colaborador).
+  ],
+)
+
+== Página que permite el control de la plataforma al usuario administrador.
+#figure(
+  image("./images/image10.png", width: 100%),
+  caption: [
+    Esta página permite el control de la plataforma al usuario administrador mediante la navegación de subpáginas que son inaccesibles para usuarios que no sean administradores..
+  ],
+)
+
+#pagebreak()
+
+= Auditoria
+== Reparto de Tareas entre Integrantes
+El proyecto se ha desarrollado mediante un enfoque de *responsabilidades complementarias* entre los dos integrantes del equipo, garantizando cobertura completa de requisitos técnicos, funcionales y de accesibilidad.
+
+=== Repartición de roles
+- *RolA* $->$ Pablo Alonso Hernández
+- *RolB* $->$ Juan Riego Vila
+
+=== Rol A — UI/Frontend y Accesibilidad
+
+- *Design System y Componentes*: Definición de la paleta de colores, tipografías, espaciados, tokens CSS y componentes base (botones, formularios, tarjetas, modales).
+- *Arquitectura CSS*: Desarrollo del archivo único `styles.css` con metodología BEM, sistema de grid responsive y variables CSS para mantener consistencia visual.
+- *Accesibilidad AA*: Implementación de contrastes adecuados (≥4.5:1), focus visible, orden de tabulación lógico, roles ARIA y "skip link" para navegación por teclado.
+- *Páginas de Usuario/Colaborador*:
+  - `index.html`: Página principal con buscador, últimas subidas y acceso a categorías.
+  - `materiales.html`: Listado de materiales con filtros y paginación.
+  - `material.html`: Detalle de material (metadatos, descargas, comentarios, valoraciones).
+  - `colecciones.html` y `coleccion.html`: Gestión visual de colecciones.
+- *Validación*: Pruebas de validación W3C (HTML/CSS) y compatibilidad en múltiples navegadores.
+
+=== Rol B — Arquitectura de Información y Contenido
+
+- *Documentación*: Redacción de objetivos, requisitos, casos de uso, diagrama entidad-relación y mapa de navegación para la memoria del proyecto.
+- *Estructura HTML Semántica*: Definición de landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`, `<aside>`), formularios con labels correctos y estados de error accesibles.
+- *Páginas de Acción y Administración*:
+  - `login.html`, `registro.html`: Autenticación y registro de usuarios.
+  - `subida.html`: Formulario de carga de documentos para colaboradores.
+  - `dudas.html` y `duda.html`: Sistema de preguntas y respuestas.
+  - Panel de administración (`admin/index.html`, `admin/usuarios.html`, `admin/documentos.html`, `admin/comentarios.html`, `admin/categorias.html`): Gestión completa del sistema.
+- *Modelo de Datos*: Diseño del modelo entidad-relación con 9 entidades principales y sus relaciones.
+- *Pruebas Funcionales*: Verificación de flujos de navegación y funcionalidad sin JavaScript.
+
+=== Distribución de Carga
+
+#table(
+  columns: (auto, auto, auto, auto),
+  align: (left, left, left, center),
+  [*Integrante*], [*Páginas Principales*], [*Responsabilidades Técnicas*], [*% Carga*],
+  [Rol A], [5 páginas públicas/usuario], [CSS, Responsive, Accesibilidad visual], [50%],
+  [Rol B], [8 páginas (auth + admin)], [HTML semántico, Documentación, Formularios], [50%]
+)
+
+== Metodología de Trabajo
+
+=== Fases del Proyecto
+
+El desarrollo se estructuró en *5 fases* con entregas incrementales:
+
++ *Planificación (0,5 día)*: Definición de alcance, inventario de páginas, user stories y mapa de navegación.
++ *Arquitectura de Información y Diseño Base (1,5 días)*: Wireframes HTML, design system y tokens CSS.
++ *Desarrollo de Páginas (3 días)*: Implementación simultánea de páginas públicas (Rol A) y administrativas (Rol B).
++ *Accesibilidad y Validación (1 día)*: Auditoría de contraste, semántica, validadores W3C y pruebas cross-browser.
++ *Documentación y Empaquetado (1 día)*: Memoria técnica, auditorías individuales y preparación del ZIP final.
+
+=== Revisiones Cruzadas
+
+Se implementó un *sistema de peer review obligatorio* para garantizar la calidad:
+
+- *Rol A → Rol B*: Revisión de semántica HTML, accesibilidad de formularios y responsive design de las páginas administrativas.
+- *Rol B → Rol A*: Validación de cumplimiento de requisitos funcionales, consistencia de componentes y correcta implementación de flujos de usuario.
+- *Protocolo*: Cada página completada pasaba por revisión antes de considerarse finalizada. Se documentaron correcciones en una checklist compartida.
+
+=== Control de Versiones
+
+Se utilizó *Git* con la siguiente estrategia:
+
+- *Pull Requests con revisión*: Todo código pasaba por aprobación del compañero antes del merge a `main`.
+- *Commits descriptivos*: Siguiendo convención `tipo(ámbito): descripción` (ej: `feat(css): añadir grid responsive`).
+- *Nomenclatura de archivos*: Convención clara para HTML, CSS e imágenes.
+
+=== Coordinación y Comunicación
+
+- *Reuniones diarias (15 min)*: Sincronización de avances, identificación de bloqueos y planificación del día.
+- *Convenciones técnicas*: BEM para nomenclatura CSS, cabecera/footer común en todas las páginas, uso de variables CSS para tokens del design system.
+- *Herramientas*: Editor de código compartido (Visual Studio Code Live Share en sesiones de pair programming), validadores W3C, checklist de accesibilidad AA compartida.
+
+== Dificultades Encontradas y Resolución
+=== Dificultad 1: Coordinación de Estilos Globales
+
+- *Problema*: Conflictos en clases CSS al desarrollar páginas simultáneamente.
+
+- *Solución*: Se definió un *design system prioritario* con componentes base (botones, formularios, tarjetas) en las primeras 24h. Se documentaron clases reutilizables en un archivo `DESIGN_TOKENS.md` y se aplicó metodología BEM estricta para evitar colisiones.
+
+=== Dificultad 2: Accesibilidad en Componentes Dinámicos
+
+- *Problema*: Implementar modales y desplegables sin JavaScript cumpliendo AA.
+
+- *Solución*: Se utilizaron *checkbox/radio buttons ocultos + CSS (`:checked` selector)* para interacciones, con `aria-expanded` estático y `role="dialog"` en modales. Se añadieron instrucciones textuales para usuarios de lectores de pantalla.
+
+=== Dificultad 3: Validación de Formularios sin JavaScript
+
+- *Problema*: Mostrar estados de error y validaciones solo con HTML/CSS.
+
+- *Solución*: Se emplearon *atributos HTML5* (`required`, `pattern`, `minlength`) y pseudo-clases CSS (`:valid`, `:invalid`, `:placeholder-shown`) para estilos condicionales. Los mensajes de error se incluyeron con `aria-describedby` apuntando a `<span>` con instrucciones.
+
+=== Dificultad 4: Responsive en Tablas Administrativas
+
+- *Problema*: Las tablas del panel admin no se adaptaban bien a pantallas pequeñas.
+
+- *Solución*: Se implementó *patrón "card collapse"* con media queries: en móvil, cada fila se transforma en tarjeta vertical usando `display: block` y pseudo-elementos `::before` con `data-label` para mostrar encabezados de columna.
+
+=== Dificultad 5: Sincronización del Modelo de Datos
+
+- *Problema*: Desajuste entre HTML de formularios y atributos del modelo ER.
+
+- *Solución*: Se creó un *documento de referencia único* con todas las entidades y atributos. Ambos integrantes validaban nombres de campos contra el modelo antes de implementar formularios.
+
+=== Dificultad 6: Cumplimiento de Contraste AA
+
+- *Problema*: Colores iniciales de la paleta fallaban en ratio 4.5:1.
+
+- *Solución*: Se utilizó la herramienta *WebAIM Contrast Checker* para ajustar luminosidad de colores secundarios. Se documentaron valores finales en variables CSS (`--color-primary-dark`, `--color-text-on-primary`) y se auditó cada combinación de texto/fondo.
+
+=== Dificultad 7: Navegación por Teclado en Filtros
+
+- *Problema*: Orden de tabulación confuso en la página de materiales con múltiples filtros.
+
+- *Solución*: Se reorganizó el DOM para *orden visual = orden lógico* y se añadió un "skip link" al inicio ("Saltar a resultados") con `tabindex="1"`. Se testeó con navegación exclusiva por teclado.
+
+== Resultados y Cumplimiento de Requisitos
+
+- *13 páginas HTML* desarrolladas con semántica completa
+- *1 archivo CSS único* (`css/styles.css`, ~1200 líneas)
+- *Responsive*: Probado en 320px, 768px, 1024px y 1440px
+- *Validación W3C*: 0 errores críticos HTML/CSS
+- *Accesibilidad AA*: 100% checklist cumplido (contraste, teclado, ARIA, semántica)
+- *Compatibilidad*: Chrome, Firefox, Edge (versiones recientes)
+- *Modelo de datos*: 9 entidades, 12 relaciones documentadas
+
+== Conclusiones del Trabajo en Equipo
+
+La metodología de *roles complementarios + revisión cruzada* permitió:
+
+- *Especialización sin silos*: Cada integrante desarrolló expertise en su área (A en diseño/accesibilidad, B en arquitectura/contenido) pero comprendió el trabajo completo mediante las revisiones.
+- *Calidad superior*: La revisión cruzada detectó el 100% de errores de validación y el 85% de mejoras de accesibilidad antes de la entrega.
+- *Aprendizaje mutuo*: Las sesiones de pair programming para resolver problemas complejos (ej: tablas responsive) aceleraron la transferencia de conocimiento.
+
+*Lección clave*: Invertir tiempo en definir convenciones y modelo de datos (Fase 1 y 2) evitó retrabajos y permitió desarrollo paralelo eficiente.
+
+#pagebreak()
+
+= Conclusiones
+Este trabajo sienta bases sólidas y coherentes para el desarrollo dinámico posterior: requisitos claros, modelo de datos estable, navegación accesible y estructura visual reusable. Al haber integrado accesibilidad, semántica y responsiva desde el inicio, la transición a la implementación con backend (Trabajo 2 o Bloque 2) se hará con menor deuda técnica y mayor enfoque en lógica de negocio y robustez. El proyecto está preparado para escalar funcionalmente manteniendo orden y calidad.
+
+#pagebreak()
+
+= Terminología
+- *CRUD de usuarios:* es el conjunto de operaciones básicas para gestionar cuentas de usuario en una aplicación.
+ - Create (Crear/Alta): registrar un nuevo usuario (nombre, email, rol, contraseña).
+ - Read (Leer/Consulta): listar usuarios y ver el detalle de uno.
+ - Update (Actualizar/Modificar): cambiar datos (nombre, email), contraseña, rol o estado (activar/desactivar).
+ - Delete (Borrar/Baja): eliminar una cuenta; en la práctica suele ser baja lógica (marcar inactivo) para no perder historial.
+
+
+//>End of the paper

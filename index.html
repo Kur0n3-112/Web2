@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de intercambio de material académico - Comparte y descubre apuntes, exámenes y recursos educativos">
+  <title>Portal Académico - Intercambio de Material Educativo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Enlace para saltar al contenido (accesibilidad) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  
+  <!-- Encabezado -->
+  <header class="header" role="banner">
+    <div class="header__container">
+      <a href="index.html" class="header__logo" aria-label="Portal Académico - Inicio">
+        &#128218; Portal Académico
+      </a>
+      
+      <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link nav__link--active" aria-current="page">Inicio</a></li>
+          <li><a href="public/materiales.html" class="nav__link">Materiales</a></li>
+          <li><a href="public/colecciones.html" class="nav__link">Colecciones</a></li>
+          <li><a href="public/dudas.html" class="nav__link">Q&amp;A</a></li>
+          <li><a href="public/login.html" class="nav__link">Iniciar sesión</a></li>
+          <li></li>
+          <li><a href="public/index.html" class="nav__link">Prueba como usuario registrado</a></li>
+          <li><a href="admin/index.html" class="nav__link">Panel de administrador</a></li>
+          <li><a href="public/registro.html" class="btn btn--primary btn--sm">Registrarse</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Contenido principal -->
+  <main id="main-content" class="main" role="main">
+    <!-- Sección hero con buscador -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__content">
+          <h1 id="hero-title" class="hero__title text-center">
+            Comparte y descubre material académico
+          </h1>
+          <p class="hero__subtitle text-center">
+            Miles de apuntes, exámenes y recursos educativos compartidos por estudiantes y docentes
+          </p>
+          
+          <!-- Buscador principal -->
+          <form action="public/materiales.html" method="get" class="search-form" role="search" aria-label="Buscar materiales académicos">
+            <div class="form-group">
+              <label for="search-input" class="visually-hidden">Buscar materiales</label>
+              <div class="form-search">
+                <span class="form-search__icon" aria-hidden="true">&#128269;</span>
+                <input 
+                  type="search" 
+                  id="search-input" 
+                  name="q" 
+                  class="form-input form-search__input" 
+                  placeholder="Buscar apuntes, exámenes, prácticas..."
+                  aria-label="Buscar materiales académicos"
+                >
+              </div>
+            </div>
+            
+            <div class="search-form__filters flex flex-wrap gap-4 justify-center">
+              <div class="form-group">
+                <label for="category-select" class="visually-hidden">Categoría</label>
+                <select id="category-select" name="category" class="form-select">
+                  <option value="">Todas las categorías</option>
+                  <option value="matematicas">Matemáticas</option>
+                  <option value="fisica">Física</option>
+                  <option value="programacion">Programación</option>
+                  <option value="quimica">Química</option>
+                  <option value="historia">Historia</option>
+                  <option value="idiomas">Idiomas</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="type-select" class="visually-hidden">Tipo de material</label>
+                <select id="type-select" name="type" class="form-select">
+                  <option value="">Todos los tipos</option>
+                  <option value="apuntes">Apuntes</option>
+                  <option value="examenes">Exámenes</option>
+                  <option value="practicas">Prácticas</option>
+                  <option value="ejercicios">Ejercicios</option>
+                  <option value="resumenes">Resúmenes</option>
+                </select>
+              </div>
+              
+              <button type="submit" class="btn btn--primary">
+                Buscar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Categorías destacadas -->
+    <section class="categories" aria-labelledby="categories-title">
+      <div class="container">
+        <h2 id="categories-title" class="text-center">Explora por categoría</h2>
+        
+        <div class="grid grid--cols-2 grid--md-cols-3 grid--lg-cols-4 mt-6">
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=matematicas" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#128208;</div>
+                <h3 class="category-card__title">Matemáticas</h3>
+                <p class="category-card__count">2,453 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=programacion" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#128187;</div>
+                <h3 class="category-card__title">Programación</h3>
+                <p class="category-card__count">1,892 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=fisica" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#9883;&#65039;</div>
+                <h3 class="category-card__title">Física</h3>
+                <p class="category-card__count">1,567 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=quimica" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#129514;</div>
+                <h3 class="category-card__title">Química</h3>
+                <p class="category-card__count">1,234 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=historia" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#128220;</div>
+                <h3 class="category-card__title">Historia</h3>
+                <p class="category-card__count">987 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=idiomas" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#127757;</div>
+                <h3 class="category-card__title">Idiomas</h3>
+                <p class="category-card__count">876 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html?category=economia" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#128202;</div>
+                <h3 class="category-card__title">Economía</h3>
+                <p class="category-card__count">654 materiales</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="category-card card card--clickable">
+            <a href="public/materiales.html" class="category-card__link">
+              <div class="card__body text-center">
+                <div class="category-card__icon" aria-hidden="true">&#10133;</div>
+                <h3 class="category-card__title">Ver todas</h3>
+                <p class="category-card__count">15+ categorías</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Materiales recientes -->
+    <section class="recent-materials mt-8" aria-labelledby="recent-title">
+      <div class="container">
+        <div class="flex justify-between align-center mb-6">
+          <h2 id="recent-title">Últimas subidas</h2>
+          <a href="public/materiales.html" class="btn btn--outline">Ver todos los materiales</a>
+        </div>
+        
+        <div class="grid grid--cols-1 grid--md-cols-2 grid--lg-cols-3">
+          <article class="material-card card">
+            <div class="card__body">
+              <div class="flex justify-between align-center mb-4">
+                <span class="badge badge--primary">Apuntes</span>
+                <div class="rating" aria-label="Valoración: 4.5 de 5 estrellas">
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star rating__star--empty" aria-hidden="true">&#9733;</span>
+                  <span class="rating__count">(127)</span>
+                </div>
+              </div>
+              
+              <h3 class="material-card__title">
+                <a href="public/material.html?id=1">Cálculo Diferencial e Integral - Teoría Completa</a>
+              </h3>
+              
+              <p class="material-card__description">
+                Apuntes completos de Cálculo I incluyendo límites, derivadas e integrales con ejemplos resueltos paso a paso.
+              </p>
+              
+              <div class="material-card__meta">
+                <span class="material-card__category">&#128208; Matemáticas</span>
+                <span class="material-card__date">Hace 2 horas</span>
+              </div>
+            </div>
+            
+            <div class="card__footer flex justify-between align-center">
+              <span class="material-card__author">Por <strong>María García</strong></span>
+              <span class="material-card__downloads">1.2K descargas</span>
+            </div>
+          </article>
+          
+          <article class="material-card card">
+            <div class="card__body">
+              <div class="flex justify-between align-center mb-4">
+                <span class="badge badge--secondary">Examen</span>
+                <div class="rating" aria-label="Valoración: 5 de 5 estrellas">
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__count">(89)</span>
+                </div>
+              </div>
+              
+              <h3 class="material-card__title">
+                <a href="public/material.html?id=2">Examen Resuelto - POO con Java</a>
+              </h3>
+              
+              <p class="material-card__description">
+                Examen de febrero 2024 con soluciones detalladas. Incluye herencia, polimorfismo y patrones de diseño.
+              </p>
+              
+              <div class="material-card__meta">
+                <span class="material-card__category">&#128187; Programación</span>
+                <span class="material-card__date">Hace 5 horas</span>
+              </div>
+            </div>
+            
+            <div class="card__footer flex justify-between align-center">
+              <span class="material-card__author">Por <strong>Carlos Ruiz</strong></span>
+              <span class="material-card__downloads">856 descargas</span>
+            </div>
+          </article>
+          
+          <article class="material-card card">
+            <div class="card__body">
+              <div class="flex justify-between align-center mb-4">
+                <span class="badge badge--primary">Apuntes</span>
+                <div class="rating" aria-label="Valoración: 4 de 5 estrellas">
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star" aria-hidden="true">&#9733;</span>
+                  <span class="rating__star rating__star--empty" aria-hidden="true">&#9733;</span>
+                  <span class="rating__count">(64)</span>
+                </div>
+              </div>
+              
+              <h3 class="material-card__title">
+                <a href="public/material.html?id=3">Física Cuántica - Resumen Visual</a>
+              </h3>
+              
+              <p class="material-card__description">
+                Resumen esquemático con diagramas y explicaciones claras de los conceptos fundamentales de física cuántica.
+              </p>
+              
+              <div class="material-card__meta">
+                <span class="material-card__category">&#9883;&#65039; Física</span>
+                <span class="material-card__date">Hace 1 día</span>
+              </div>
+            </div>
+            
+            <div class="card__footer flex justify-between align-center">
+              <span class="material-card__author">Por <strong>Ana Martínez</strong></span>
+              <span class="material-card__downloads">543 descargas</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Llamada a la acción -->
+    <section class="cta mt-8" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+          <div class="card__body text-center" style="padding: var(--spacing-10);">
+            <h2 id="cta-title" style="color: var(--color-text-inverse); font-size: var(--font-size-3xl);">
+              ¿Quieres colaborar?
+            </h2>
+            <p style="color: var(--color-text-inverse); font-size: var(--font-size-lg); margin-bottom: var(--spacing-6);">
+              Conviértete en colaborador y comparte tus apuntes con miles de estudiantes
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+              <a href="public/registro.html" class="btn btn--lg" style="background-color: white; color: #667eea;">
+                Registrarse gratis
+              </a>
+              <a href="public/subida.html" class="btn btn--lg btn--outline" style="border-color: white; color: white;">
+                Subir material
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Estadísticas -->
+    <section class="stats mt-8" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 id="stats-title" class="visually-hidden">Estadísticas de la plataforma</h2>
+        
+        <div class="grid grid--cols-2 grid--lg-cols-4">
+          <div class="stat-card text-center">
+            <div class="stat-card__value" style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-primary);">
+              12,456
+            </div>
+            <div class="stat-card__label" style="color: var(--color-text-secondary);">
+              Materiales compartidos
+            </div>
+          </div>
+          
+          <div class="stat-card text-center">
+            <div class="stat-card__value" style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-primary);">
+              8,943
+            </div>
+            <div class="stat-card__label" style="color: var(--color-text-secondary);">
+              Estudiantes activos
+            </div>
+          </div>
+          
+          <div class="stat-card text-center">
+            <div class="stat-card__value" style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-primary);">
+              2,341
+            </div>
+            <div class="stat-card__label" style="color: var(--color-text-secondary);">
+              Colaboradores
+            </div>
+          </div>
+          
+          <div class="stat-card text-center">
+            <div class="stat-card__value" style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-primary);">
+              156K
+            </div>
+            <div class="stat-card__label" style="color: var(--color-text-secondary);">
+              Descargas totales
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Pie de página -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__section-title">Portal Académico</h3>
+          <p>Plataforma colaborativa para compartir conocimiento y recursos educativos entre estudiantes y docentes.</p>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Recursos</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="public/materiales.html" class="footer__link">Explorar materiales</a></li>
+            <li class="footer__list-item"><a href="public/colecciones.html" class="footer__link">Colecciones</a></li>
+            <li class="footer__list-item"><a href="public/dudas.html" class="footer__link">Preguntas y respuestas</a></li>
+            <li class="footer__list-item"><a href="public/subida.html" class="footer__link">Subir material</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Comunidad</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Guía de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Normas de la comunidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Preguntas frecuentes</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__section">
+          <h3 class="footer__section-title">Legal</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#" class="footer__link">Términos de uso</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Política de privacidad</a></li>
+            <li class="footer__list-item"><a href="#" class="footer__link">Licencias</a></li>
+            <li class="footer__list-item"><a href="admin/index.html" class="footer__link">Administración</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>&copy; 2025 Portal Académico. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
