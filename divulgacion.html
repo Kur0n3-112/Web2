@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto - Portal de Intercambio Académico</title>
+  <style>
+    body.papel { background-color:#F0F0C0; }
+    .bloque { font-family:arial; font-size:1.1em; text-align:justify; border:1.5mm solid #508050; margin:0.5em; padding:1em; background-color: #FFFFF0; }
+    .titulo { margin:5mm; font-weight:bold; }
+    .titulo0 { font-size:2.0em; color:#4040F0; }
+    .titulo1 { font-size:1.8em; }
+    .titulo2 { font-size:1.5em; }
+    .titulo3 { margin:0.5em 0; padding:0.5em; font-size:1.1em; background-color:#F0C060; border: 1px solid #C0A040; }
+    .subtitulo { margin-top:1em; font-weight:bold; color: #306030; font-size: 1.1em; }
+    
+    /* Estilos Tablas Matrices */
+    table.tabla { background-color:#C0E0F0; border:4px ridge #70D0F0; border-collapse:collapse; font-size:0.9em; width: 100%; }
+    table.tabla td, table.tabla th { border: 1px solid #808080; padding: 4px; }
+    table.tabla th { background-color: #A0C0E0; text-align:center; }
+  </style>
+</head>
+<body class="papel">
+
+<div class="bloque">
+
+  <div class="titulo titulo0">Portal Académico</div>
+  <div class="titulo titulo1">Proyecto GIISI - USAL</div>
+  <div class="titulo titulo2">Requisitos Iniciales y Funcionales</div>
+
+  <br/>
+  &nbsp;&nbsp;&nbsp;Se desea diseñar una aplicación web para la <strong>Gestión Colaborativa e Intercambio de Material Académico</strong>.
+  <br/>
+  <br/>
+  &nbsp;&nbsp;&nbsp;La aplicación será un portal web facilitador donde estudiantes y docentes podrán compartir apuntes, exámenes y prácticas. La solución prioriza la localización rápida de recursos y la calidad mediante un sistema de validación y reputación (comentarios y valoraciones).
+  <br/>
+  <br/>
+  &nbsp;&nbsp;&nbsp;Se podrán realizar búsquedas por el repositorio de documentos mediante filtros por <strong>categoría</strong> (asignaturas, cursos), tipos de documento (apuntes, tesis, guías) y autores. Los resultados mostrarán listados paginados de recursos disponibles para su consulta o descarga.
+
+  <hr/>
+
+  <div class="titulo titulo3">Requerimientos para el Público en general:</div>
+  <div style="text-align:justify;margin:0em">
+    <ul>
+      <li><strong>Portada "Inicial":</strong> Una página de aterrizaje (Landing Page) que explique el propósito del portal, con una barra de navegación global (Inicio, Materiales, Dudas, Login, Registro). Debe incluir un buscador central prominente para localizar materiales por título o palabra clave.</li>
+      <br/>
+      <li><strong>Catálogo de Materiales (Lectura):</strong> 
+        Acceso al listado de documentos públicos. Se permitirá filtrar por categorías jerárquicas (Ej: Grado > Curso > Asignatura).
+        <ul>
+           <li>Los listados mostrarán una tarjeta resumen con: Título, Tipo de archivo, Autor y Valoración media.</li>
+        </ul>
+      </li>
+      <br/>
+      <li><strong>Ficha de Documento (Detalle):</strong> 
+        Visualización de la información completa del recurso: Título, descripción/resumen, fecha de publicación, autor, categoría asociada, tamaño del archivo y lista de comentarios/valoraciones de otros usuarios.
+      </li>
+    </ul>
+  </div>
+
+  <br/>
+
+  <div class="titulo titulo3">Requerimientos para Usuarios Registrados (Roles: Normal y Colaborador):</div>
+  <div style="text-align:justify;margin:0em">
+    <ul>
+      <li><strong>Perfil de Usuario:</strong> Gestión de datos personales (nombre, email, avatar). Capacidad para ver su historial de descargas o interacciones.</li>
+      <br/>
+      <li><strong>Interacción con Materiales:</strong>
+        <ul>
+          <li><strong>Descarga:</strong> Permiso para descargar los archivos adjuntos (PDF, DOC, ZIP).</li>
+          <li><strong>Valoración y Comentarios:</strong> Posibilidad de puntuar recursos (1-5 estrellas) y añadir reseñas textuales para orientar a otros estudiantes.</li>
+          <li><strong>Dudas y Respuestas:</strong> Acceso al foro de preguntas donde pueden plantear dudas sobre materias o responder a las de sus compañeros.</li>
+        </ul>
+      </li>
+      <br/>
+      <li><strong>Funciones de Colaborador (Usuario Avanzado):</strong>
+        <ul>
+          <li><strong>Subida de Documentos:</strong> Formulario para aportar nuevo material. Requiere introducir metadatos (título, resumen, categoría) y adjuntar el fichero. Estos documentos quedarán en estado "Pendiente" hasta su validación.</li>
+          <li><strong>Gestión de Colecciones:</strong> Capacidad para agrupar varios documentos relacionados (ej: "Pack de Apuntes 1º Curso") en una entidad "Colección" para facilitar su difusión conjunta.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <br/>
+
+  <div class="titulo titulo3">Requerimientos para Administradores:</div>
+  <div style="text-align:justify;margin:0em">
+    <ul>
+      <li><strong>Moderación de Contenidos:</strong>
+        Listado de documentos pendientes de validación. Acciones permitidas:
+        <ul>
+          <li><strong>Publicar:</strong> Hace visible el documento en el portal.</li>
+          <li><strong>Rechazar:</strong> Devuelve el documento al autor con un motivo de rechazo (campo de texto).</li>
+        </ul>
+      </li>
+      <br/>
+      <li><strong>Gestión de Entidades Maestras:</strong>
+        <ul>
+          <li><strong>Usuarios:</strong> Bloqueo/desbloqueo de cuentas, cambio de roles.</li>
+          <li><strong>Categorías:</strong> CRUD (Crear, Leer, Actualizar, Borrar) de las categorías y asignaturas del sistema.</li>
+          <li><strong>Comentarios:</strong> Moderación y eliminación de comentarios inapropiados.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <br/>
+
+  <div class="titulo titulo3">Información (Entidades de Datos):</div>
+  <div style="text-align:justify;margin:0em">
+    A continuación se describe la estructura de información basada en el modelo de datos definido:
+    <br/><br/>
+    <ul>
+      <li><strong>Usuario:</strong>
+        Elemento con &rarr; id, nombre, email, contraseña (hash), rol (Normal/Colaborador/Admin), fecha_registro, estado (activo/inactivo).
+      </li>
+      <br/>
+      <li><strong>Documento:</strong>
+        Elemento con &rarr; id, título, descripción/resumen, nombre_fichero, ruta_archivo, fecha_publicacion, estado (pendiente/publicado/rechazado), id_autor, id_categoria.
+      </li>
+      <br/>
+      <li><strong>Categoría:</strong>
+        Elemento con &rarr; id, nombre, descripción, id_padre (para jerarquías). Permite organizar los contenidos por Grados o Asignaturas.
+      </li>
+      <br/>
+      <li><strong>Comentario / Valoración:</strong>
+        Elemento con &rarr; id, texto_comentario, puntuación (numérica), fecha, id_usuario, id_documento.
+      </li>
+      <br/>
+      <li><strong>Colección:</strong>
+        Elemento con &rarr; id, nombre, descripción, fecha_creacion, id_propietario.
+        <ul>
+          <li><em>Relación Colección-Documento (N-M):</em> Permite que un documento pertenezca a varias colecciones temáticas.</li>
+        </ul>
+      </li>
+      <br/>
+      <li><strong>Duda / Respuesta:</strong>
+        Elemento con &rarr; id, título, cuerpo, fecha, id_autor. Las respuestas se vinculan a una duda principal.
+      </li>
+    </ul>
+  </div>
+
+  <br/>
+  
+  <div class="titulo titulo3">Matriz de Permisos (Resumen):</div>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Funcionalidad</th>
+        <th>Público</th>
+        <th>Usuario Normal</th>
+        <th>Colaborador</th>
+        <th>Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Buscar y Ver Fichas</td><td>&check;</td><td>&check;</td><td>&check;</td><td>&check;</td></tr>
+      <tr><td>Descargar Archivos</td><td>&nbsp;</td><td>&check;</td><td>&check;</td><td>&check;</td></tr>
+      <tr><td>Comentar/Valorar</td><td>&nbsp;</td><td>&check;</td><td>&check;</td><td>&check;</td></tr>
+      <tr><td>Subir Documentos</td><td>&nbsp;</td><td>&nbsp;</td><td>&check;</td><td>&check;</td></tr>
+      <tr><td>Crear Colecciones</td><td>&nbsp;</td><td>&nbsp;</td><td>&check;</td><td>&check;</td></tr>
+      <tr><td>Validar/Rechazar Docs</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&check;</td></tr>
+      <tr><td>Gestión Usuarios/Cats</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&check;</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>
